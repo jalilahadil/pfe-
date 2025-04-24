@@ -1,0 +1,54 @@
+.footerComponent
+{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../assets/img/askForm.jpg");
+    background-size:100vw 100vh;
+}
+.askForm
+{
+    position: relative;
+    top: 10%;
+    left: 40%;
+    width: fit-content;
+}
+.askForm h3
+{
+    font-weight: 600;
+    text-align: center;
+}
+.askFormControl
+{
+width: 40vw;
+background: transparent;
+border-top: 0px;
+border-left: 0px;
+border-right: 0px;
+border-bottom: 2px solid #fff;
+color: #fff;
+margin-top: 20px;
+}
+.askFormControl::placeholder
+{
+color: #fff;
+}
+.footerContent  ul 
+{
+    display: flex;
+    list-style-type: none;
+    column-gap: 25px;
+    justify-content: center;
+    width: 100%;
+}
+.footerContent  
+{
+    position: absolute;
+    top: 90%;
+    margin-top: 10px;
+    color: #fff;
+    width: 100%;
+}
+.copyrights
+{
+    letter-spacing: 2px;
+}

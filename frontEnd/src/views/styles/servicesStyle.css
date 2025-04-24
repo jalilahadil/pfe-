@@ -1,0 +1,22 @@
+.servicesContainer
+{
+    width: 100vw ;
+    height: 100vh;
+    
+    background-image: url("../../assets/img/girlDrawing.jpg");
+    background-size: 100vw 100vh;
+}
+.contentFooter
+{
+    position: fixed;
+    top: 85%;
+    
+}
+.secondButton
+{
+    background-color: var();
+}
+.viewAllButton.btn-warning
+{
+    background-color:#FFC107;
+}

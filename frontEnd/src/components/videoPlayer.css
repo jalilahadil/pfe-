@@ -1,0 +1,15 @@
+.videoPlayer
+{
+    height: 60vh ;
+    width: 60vw;
+   
+}
+.playerContainer
+{
+    display: flex;
+    padding: 15px;
+    
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+}

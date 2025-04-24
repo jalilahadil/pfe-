@@ -1,0 +1,130 @@
+/* FileUploader.module.css */
+
+.fileInputBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+  padding: 20px;
+
+  margin: 0 auto;
+}
+
+.wrapperFileSection,
+.linkInputSection,
+.formSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  width: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inputGroup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.submitButton button {
+  padding: 10px 20px;
+  background-color: var(--mainColor);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitButton button:hover {
+  background-color: #0056b3;
+}
+
+.videoPreview iframe {
+  margin-top: 20px;
+  width: 80vh;
+  
+  height: 390px;
+}
+
+.selectedFiles {
+  width: 100%;
+}
+
+.fileList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.fileList .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove {
+  cursor: pointer;
+}
+
+.remove i {
+  color: red;
+}
+
+/* Modal.module.css */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 80%;
+  max-width: 640px;
+  text-align: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.linkInputSection input
+{
+width: 20vw;
+}

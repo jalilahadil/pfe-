@@ -1,0 +1,109 @@
+.signup-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  
+  
+  .logo-container {
+    background: 200px;
+    border-radius: 10px;
+   
+    
+  }
+  
+  .logo {
+    width: 120px;
+    background: 200px;
+    background-size: cover;
+    background-position: center;
+    
+  }
+  .logoo {
+    width: 120px;
+    background: 200px;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vh;
+    
+  }
+  .signup-right {
+    flex: 1;
+    background-color: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  .signup-btn {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #d9534f;
+    background: none;
+    color: #d9534f;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .signup-btn:hover {
+    background: #d9534f;
+    color: white;
+  }
+  
+  .google {
+    border-color: #ea4335;
+    color: #ea4335;
+  }
+  .google:hover {
+    background: #ea4335;
+  }
+  
+  .apple {
+    border-color: black;
+    color: black;
+  }
+  
+  .apple:hover {
+    background: black;
+  }
+  
+  .email {
+    border-color: #f4b400;
+    color: #f4b400;
+  }
+  
+  .email:hover {
+    background: #f4b400;
+  }
+  
+  .signin-link {
+    margin-top: 20px;
+  }
+  .signin-link a {
+    color: #d9534f;
+    text-decoration: none;
+  }
+  
+ .terms {
+    font-size: 12px;
+    margin-top: 10px;
+    color: gray;
+
+  }        

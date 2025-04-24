@@ -1,0 +1,67 @@
+.bgContainer
+{
+    width: 100vw;
+    height:100vh;
+    background-image: url("../../assets/img/coverImage.png");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+    .navbarItems li a
+    {
+        color: #fff !important;
+
+    }
+        .logoImage
+        {
+            width: 10vw;
+        }
+        .navbarItems
+        {
+            list-style-type: none;
+            column-gap: 25px;
+            color: #fff;
+            font-weight: 500;
+            
+        }
+            
+            .firstText
+            {
+                color: #fff;
+                font-weight: 700;
+                font-size: 75px;
+            }
+            .secondText
+            {
+                text-transform: uppercase;
+            }
+                .secondText span:first-child
+                {
+                    color: var(--lightGreenColor);
+                    font-size: 30px;
+                    font-weight: 500;
+                }
+                .secondText span:last-child
+                {
+                    color: var(--lightOrangeColor);
+                    font-size: 50px;
+                    font-weight: 500;
+                }
+            .sloganText
+            {
+                color: #fff;
+                font-size: 20px;
+            }
+            #enrollBtn
+            {
+                background-color: var(--blueGreenColor);
+                color: #fff;
+                padding: 18px;
+                font-weight: 600;
+                padding-inline: 50px;
+                border-radius: 20px 41px 16px 23px;
+            }
+            #enrollBtn:hover
+            {
+                background-color: var(--blueGreenColor);
+            
+            }

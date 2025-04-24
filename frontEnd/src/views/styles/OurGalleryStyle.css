@@ -1,0 +1,37 @@
+.carouselItem {
+    background-size: cover;
+    width: 18rem;
+    height: 20rem;
+    border-radius: 100px;
+    transition: transform 0.5s ease;
+  }
+  
+  .carouselItem.active {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+.sliderControl
+{
+    width: 30px;
+    height: 40px;
+    font-size: 30px !important;
+    font-weight: 200 !important;
+    color: #fff !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 25px 21px 21px 23px;
+    font-family: "Poppins";
+    box-shadow: 2px 5px 10px 1px  rgba(59, 59, 59,0.75);
+   
+}
+.prevContainer .sliderControl
+{
+    background-color: #F23E98;
+}
+.nextContainer .sliderControl
+{
+    background-color: #9F9F9F;
+}

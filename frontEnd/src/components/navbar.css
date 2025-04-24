@@ -1,0 +1,12 @@
+.subscribeBtn
+{
+ background-color: var(--orangeColor);
+ color: #fff;
+ font-weight: 500;
+ border-radius: 15px 30px 15px 5px;
+}
+.navbar
+{
+    position: sticky top;
+    
+}
