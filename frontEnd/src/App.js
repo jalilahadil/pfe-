@@ -20,7 +20,9 @@ import ManageChapter from "./views/manageChapter.js"
 import AddNewLesson from './components/addNewLesson.js';
 import DisplayLesson from './components/displayLesson.js';
 import UpdateLesson from './components/updateLesson.js';
-import Subscribtion from './components/Subscribtion.js';
+import Subscribtion from './views/Subscribtion.js';
+import Exercices from './views/Exercices.js';
+import SolveExercice from './solveExercice.js';
 
 function App() {
   return (
@@ -46,8 +48,10 @@ function App() {
         <Route path='/chapter/manageContent/:id' element={<ManageChapter />} /> 
         <Route path='/lesson/addNewOne/:id' element={<AddNewLesson />} /> 
         <Route path='/lesson/viewLesson/:id/:courseId/:chapterId' element={<DisplayLesson />} /> 
+        <Route path='/lesson/viewLessonExercices/:id' element={<Exercices />} /> 
         <Route path='/lesson/updateLesson/:id/' element={<UpdateLesson />} /> 
         <Route path='/subscribtion/' element={<Subscribtion />} /> 
+        <Route path='/exercice/solveExercice/:id' element={<SolveExercice />} /> 
         
         
       </Routes>

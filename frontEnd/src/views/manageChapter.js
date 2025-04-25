@@ -4,6 +4,12 @@ import { useParams } from 'react-router'
 import { useState } from 'react'
 import axios from "axios"
 import { FaCheckCircle } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { MdStart } from "react-icons/md";
+import { SiExercism } from "react-icons/si";
+
+
 
 import { Link } from 'react-router-dom'
 export default function ManageChapter() {
@@ -92,7 +98,7 @@ export default function ManageChapter() {
                 {error != "" && <p className="alert alert-danger">{error}</p>}
                 <div className="row d-flex justify-content-center">
                     {lessons.map((lesson, index) => (
-                        <div className="card shadow-sm border-0 rounded-4" key={index} style={{ maxWidth: "24rem" }}>
+                        <div className="card shadow-sm border-0 rounded-4" key={index} style={{ maxWidth: "26rem" }}>
                             <img
                                 src={getYoutubeThumbnail(lesson.attachmentLink)}
                                 className="card-img-top"
@@ -109,19 +115,28 @@ export default function ManageChapter() {
                                     )}
                                 </h5>
                                 <p className="card-text text-muted small">{lesson.description}</p>
+                                
 
-                                <div className="actions d-flex column-gap-2">
-                                    <button className="btn btn-danger mx-2 p-1" onClick={() => deleteLesson(lesson._id)}>Supprimer Leçon</button>
-                                        <button className="btn btn-warning mx-2 p-1" onClick={() => { setSelectedLesson(lesson); setUpdateMode(true); }}>
+
+
+
+                                <div className="actions d-flex column-gap-2 flex-wrap justify-content-center ">
+                                    <button className="btn btn-danger mx-2 my-1 p-1" onClick={() => deleteLesson(lesson._id)}>
+                                    <MdDelete className='mx-1 fs-4'/> Supprimer 
+                                        </button>
+                                        <button className="btn btn-warning mx-2 my-1 p-1" onClick={() => { setSelectedLesson(lesson); setUpdateMode(true); }}>
                                         <Link className=" mx-2 p-1"
                                         style={{ textDecoration: "none", color: "#fff" }}
                                         to={"/lesson/updateLesson/" + lesson._id}>
-                                              Modifier Leçon
+                                        <MdEdit className='mx-1 fs-4'/> Modifier 
                                     </Link>
                                           </button>
                                         
-                                    <Link className="btn btn-primary mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/lesson/viewLesson/${lesson._id}/${chapter.courseId}/${chapter._id}`}>
-                                        Commencer Leçons
+                                    <Link className="btn btn-primary  my-1 mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/lesson/viewLesson/${lesson._id}/${chapter.courseId}/${chapter._id}`}>
+                                    <MdStart className='mx-1 fs-4'/>  Commencer 
+                                    </Link>
+                                    <Link className="btn btn-dark  my-1 mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/lesson/viewLessonExercices/${lesson._id}`}>
+                                    <SiExercism className='mx-1 fs-4'/>  Exercices
                                     </Link>
                                 </div>
                             </div>

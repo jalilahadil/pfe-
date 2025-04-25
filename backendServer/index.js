@@ -74,6 +74,9 @@ server.use("/",userRoutes);
 // chapter Routes
 const chapterRouters=require("./routes/chapterRoutes")
 server.use("/",chapterRouters);
+// assignments Routes
+const assignmentRouters=require("./routes/assignmentRoutes")
+server.use("/",assignmentRouters);
 
 /******** STARTING THE CONNECTION WITH THE DATABASE     ***********/
 const connectToDatabase=require("./database/connectDatabase")

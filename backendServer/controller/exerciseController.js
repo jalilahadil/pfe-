@@ -1,9 +1,9 @@
-const {Exercise}=require("../schemas/exerciseSchema");
+const Exercise=require("../schemas/exerciseSchema");
 // 🔍 Search: Retrieves exercises by the lesson ID
 const getExercisesByLessonId = async (req, res) => {
     try {
         const exercises = await Exercise.find({ lessonId: req.params.lessonId });
-
+        
         if (!exercises || exercises.length === 0) {
             return res.status(404).json({ error: "No exercises found for this lesson" });
         }
@@ -53,11 +53,11 @@ const deleteExercise = async (req, res) => {
 // 🔄 Update: Updates an existing exercise with new data
 const updateExercise = async (req, res) => {
     try {
-        const { title, description, lessonId } = req.body;
+        const { title, description,score,lessonId } = req.body;
 
         const exercise = await Exercise.findByIdAndUpdate(
             req.params.id,
-            { title, description, lessonId },
+            { title, description, lessonId,score },
             { new: true, runValidators: true }
         );
 
@@ -70,10 +70,35 @@ const updateExercise = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
+
+// 🔄 Create : Creates an existing exercise with new data
+const createExercice = async (req, res) => {
+    try {
+        const { title, description, lessonId,score } = req.body;
+        console.log(req.body)
+        const exercise = new Exercise(
+            
+            { title, description, lessonId,score },
+           
+        );
+        const savedExercice=await exercise.save()
+
+        if (!savedExercice) {
+            return res.status(404).json({ error: "Exercise not created" });
+        }
+
+        res.status(200).json(exercise);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 module.exports={
     getExercisesByLessonId,
     getExerciseById,
     getAllExercises,
     deleteExercise,
-    updateExercise
+    updateExercise,
+    createExercice
 }

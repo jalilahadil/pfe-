@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from './navbar';
+import Navbar from '../components/navbar';
 
 export default function Subscribtion() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -41,6 +41,7 @@ export default function Subscribtion() {
             <tr>
               <th scope="col">Étudiant</th>
               <th scope="col">Enseignant</th>
+              <th scope="col">Cours</th>
               <th scope="col">Date d’abonnement</th>
               <th scope="col">Statut d’abonnement</th>
               <th scope="col">Total des points</th>
@@ -56,6 +57,7 @@ export default function Subscribtion() {
                     ? `${subscribe.courseInfo.creatorInfo.userFirstName} ${subscribe.courseInfo.creatorInfo.userLastName}`
                     : 'N/A'}
                 </td>
+                <td>{(subscribe.courseInfo.title).slice(0,25)}</td>
                 <td>{new Date(subscribe.subscribedAt).toLocaleDateString()}</td>
                 <td>{subscribe.subscribedStatus}</td>
                 <td>{subscribe.totalPoints}</td>

@@ -11,6 +11,7 @@ import Navbar from '../components/navbar'
 import imageOne from "../assets/img/course-details.jpg"
 import { useParams } from 'react-router';
 import axios from "axios"
+import { Link } from 'react-router-dom';
 
 export default function CourseDetails() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -146,7 +147,15 @@ export default function CourseDetails() {
             <button className="btn-danger btn" onClick={()=>{deleteCourse(course._id)}}> <MdDelete  className='fs-4 mx-2'/>Delete Course</button>
             <button className="btn-warning btn" onClick={()=>{setSelectedCourse(course);setIsShown(true)}}> <FaPen  className='fs-4 mx-2' />Update Course</button>
             <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2'/>Subscribe To Course</button>
-            <button className="btn-primary btn"> <MdOutlineContentCopy  ontents className='fs-4 mx-2'/>Manage  Content</button>
+            <button className="btn-primary btn">
+            <Link style={{color:"#fff",textDecoration:"none"}} to={"/cours/updateCourse/"+course._id}>
+
+               <MdOutlineContentCopy   className='fs-4 mx-2'/>
+               Manage  Content
+               </Link>
+               </button>
+
+            
  
         </div>
 

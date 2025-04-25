@@ -75,7 +75,7 @@ export default function Navbar(props) {
                     Contact Us
                   </Link>
                 </li>}
-                {!isLoggedIn &&
+                {
                 <li className='nav-item'>
                   <Link className='nav-link' to='/cours'>
                     Cours
@@ -89,7 +89,7 @@ export default function Navbar(props) {
                 </li>}
                 {isLoggedIn  &&
                 <li className='nav-item'>
-                  <Link className='nav-link' to='/'>
+                  <Link className='nav-link' to='/exercices'>
                    Mes Exercices
                   </Link>
                 </li>}

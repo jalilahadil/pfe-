@@ -11,7 +11,7 @@ export default function ManageCourse() {
     const [course,setCourse]=useState({});
     const [updateMode,setUpdateMode]=useState(false);
     const [selectedChapter,setSelectedChapter]=useState({});
-    const [chapters,setChapters]=useState([{}]);
+    const [chapters,setChapters]=useState([]);
     const user=JSON.parse(localStorage.getItem("user"))
     const role=localStorage.getItem("role")
     const deleteChapter=(chapterId)=>{
@@ -19,9 +19,11 @@ export default function ManageCourse() {
         .then(response=>{
             console.log(response)
             loadData()
+            window.location.reload()
         })
         .catch(error=>{
             console.log(error)
+            window.location.reload()
         })
     }
     const loadData = async () => {
@@ -55,7 +57,7 @@ export default function ManageCourse() {
                 <CreateChapterModal courseId={courseId} onUpdate={loadData}></CreateChapterModal>
               </div>
               <div className="row d-flex justify-content-center ">
-                {chapters.map((chapter,index)=>{
+                {chapters.length>0 &&  chapters.map((chapter,index)=>{
                     return  <div class="card shadow-sm border-0 rounded-4" key={index} style={{maxWidth: "24rem"}}>
                      <img src="https://placehold.co/600x400" class="card-img-top" alt="Chapter" style={{height: "12rem", objectFit: "cover" }}/>
                      <div class="card-body">
