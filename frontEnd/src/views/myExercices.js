@@ -55,16 +55,18 @@ const handleUpdateSubmitAT = (e) => {
   const data={  
   "_id":updatedAssignmentAT._id,
   "exerciceId":updatedAssignmentAT.exerciceId,
-  "accomplishDate":(Date.now()).toString(),
+  "accomplishDate":(new Date()).toString(),
   "userId":updatedAssignmentAT.userId,
   "note":updatedAssignmentAT.note,
   "response":updatedAssignmentAT.response,
   }
-  axios.put(`http://localhost:8080/assignment/updateAssignment/${updatedAssignmentAT._id}`,updatedAssignment)
+
+  axios.put(`http://localhost:8080/assignment/updateAssignment/${updatedAssignmentAT._id}`,data)
   .then((res) => {
     console.log('Mise à jour réussie', res.data);
     loadResponses(); 
     handleCloseModal();
+    setUpdatedAssignmentAT(null)
   })
   .catch((error) => {
     console.error('Erreur lors de la mise à jour', error);
@@ -213,6 +215,7 @@ const handleUpdateSubmitAT = (e) => {
             <tr>
               <th>#</th>
               <th>Note</th>
+              <th>Etudiant</th>
               <th>Date Soumission</th>
               <th>Action</th>
             </tr>
@@ -222,6 +225,7 @@ const handleUpdateSubmitAT = (e) => {
               <tr key={index}>
                 <td>Exercice {index + 1}</td>
                 <td>{responseAT.note}</td>
+                <td>{responseAT.student.userLastName+" "+responseAT.student.userFirstName}</td>
                 <td>{new Date(responseAT.accomplishDate).toLocaleString()}</td>
                 <td>
                   <button className="btn btn-warning mx-1" onClick={() => setUpdatedAssignmentAT(responseAT)}>

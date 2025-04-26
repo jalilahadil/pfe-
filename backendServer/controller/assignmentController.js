@@ -1,5 +1,6 @@
 const Assignment = require('../schemas/assignmentSchema');
 const Exercice = require('../schemas/exerciseSchema');
+const Student = require('../schemas/studentSchema');
 // Create a new assignment
 const createAssignment = async (req, res) => {
   try {
@@ -34,31 +35,42 @@ const getAssignmentById = async (req, res) => {
 // Get assignments by userId
 const getAssignmentsByUserId = async (req, res) => {
   try {
-    const assignments = await Assignment.find({ userId: req.params.id }).lean(); // use lean for plain JS objects
+    const assignments = await Assignment.find({ userId: req.params.id }).lean();
 
-    // Fetch all exercice _id
+    // Fetch all exerciceIds and studentIds
     const exerciceIds = assignments.map(a => a.exerciceId);
-
-    // Fetch exercices whose _id is in exerciceIds
+    const studentIds = assignments.map(a => a.userId);
+    console.log(studentIds)
+    // Fetch exercices
     const exercices = await Exercice.find({ _id: { $in: exerciceIds } }).lean();
 
-    // Create a map to quickly access exercice by id
+    // Fetch students
+    const students = await Student.find({ _id: { $in: studentIds } }).lean();
+    console.log(students)
+    // Create maps for quick access
     const exerciceMap = {};
     exercices.forEach(ex => {
       exerciceMap[ex._id.toString()] = ex;
     });
 
-    // Attach exercice details to each assignment
-    const assignmentsWithExercices = assignments.map(assignment => ({
+    const studentMap = {};
+    students.forEach(st => {
+      studentMap[st._id.toString()] = st;
+    });
+
+    // Attach exercice and student details to each assignment
+    const assignmentsWithDetails = assignments.map(assignment => ({
       ...assignment,
-      exercice: exerciceMap[assignment.exerciceId] || null // attach related exercice
+      exercice: exerciceMap[assignment.exerciceId?.toString()] || null,
+      student: studentMap[assignment.userId?.toString()] || null
     }));
 
-    res.json(assignmentsWithExercices);
+    res.json(assignmentsWithDetails);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 // Update an assignment by ID
 const updateAssignment = async (req, res) => {
   try {
