@@ -6,8 +6,7 @@ const assignemtnSchema = new mongoose.Schema({
         required: true
     },
     accomplishDate: {
-        type: Date,
-        default:Date.now,
+        type: String,
         required: true
     },
     userId: {

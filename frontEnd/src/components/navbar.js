@@ -89,7 +89,7 @@ export default function Navbar(props) {
                 </li>}
                 {isLoggedIn  &&
                 <li className='nav-item'>
-                  <Link className='nav-link' to='/exercices'>
+                  <Link className='nav-link' to='/exercice/myExercices/'>
                    Mes Exercices
                   </Link>
                 </li>}

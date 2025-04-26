@@ -23,6 +23,7 @@ import UpdateLesson from './components/updateLesson.js';
 import Subscribtion from './views/Subscribtion.js';
 import Exercices from './views/Exercices.js';
 import SolveExercice from './solveExercice.js';
+import MyExercices from './views/myExercices.js';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path='/lesson/updateLesson/:id/' element={<UpdateLesson />} /> 
         <Route path='/subscribtion/' element={<Subscribtion />} /> 
         <Route path='/exercice/solveExercice/:id' element={<SolveExercice />} /> 
+        <Route path='/exercice/myExercices/' element={<MyExercices />} /> 
         
         
       </Routes>

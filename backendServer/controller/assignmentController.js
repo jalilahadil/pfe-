@@ -1,5 +1,5 @@
 const Assignment = require('../schemas/assignmentSchema');
-
+const Exercice = require('../schemas/exerciseSchema');
 // Create a new assignment
 const createAssignment = async (req, res) => {
   try {
@@ -10,7 +10,6 @@ const createAssignment = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 // Get all assignments
 const getAllAssignments = async (req, res) => {
   try {
@@ -20,7 +19,6 @@ const getAllAssignments = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
 // Get assignment by ID
 const getAssignmentById = async (req, res) => {
   try {
@@ -33,17 +31,34 @@ const getAssignmentById = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
 // Get assignments by userId
 const getAssignmentsByUserId = async (req, res) => {
   try {
-    const assignments = await Assignment.find({ userId: req.params.userId });
-    res.json(assignments);
+    const assignments = await Assignment.find({ userId: req.params.id }).lean(); // use lean for plain JS objects
+
+    // Fetch all exercice _id
+    const exerciceIds = assignments.map(a => a.exerciceId);
+
+    // Fetch exercices whose _id is in exerciceIds
+    const exercices = await Exercice.find({ _id: { $in: exerciceIds } }).lean();
+
+    // Create a map to quickly access exercice by id
+    const exerciceMap = {};
+    exercices.forEach(ex => {
+      exerciceMap[ex._id.toString()] = ex;
+    });
+
+    // Attach exercice details to each assignment
+    const assignmentsWithExercices = assignments.map(assignment => ({
+      ...assignment,
+      exercice: exerciceMap[assignment.exerciceId] || null // attach related exercice
+    }));
+
+    res.json(assignmentsWithExercices);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
-
 // Update an assignment by ID
 const updateAssignment = async (req, res) => {
   try {
@@ -60,7 +75,6 @@ const updateAssignment = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 // Delete an assignment by ID
 const deleteAssignment = async (req, res) => {
   try {
