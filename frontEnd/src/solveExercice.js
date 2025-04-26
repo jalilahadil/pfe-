@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
 import { useParams } from 'react-router';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router';
 export default function SolveExercice() {
   const user = JSON.parse(localStorage.getItem("user"));
   const exerciceId = useParams().id;
@@ -14,7 +14,7 @@ export default function SolveExercice() {
     note: 0,
     response: ""
   });
-
+  const navigate=useNavigate()
   const loadExercice = () => {
     axios.get(`http://localhost:8080/exercises/getExericeById/${exerciceId}`)
       .then(response => {
@@ -32,6 +32,7 @@ export default function SolveExercice() {
     axios.post("http://localhost:8080/assignment/addAssignment/", assignment)
       .then(response => {
         console.log("Assignment envoyé :", response.data);
+        navigate("/lesson/viewLessonExercices/"+exercice.lessonId)
       })
       .catch(error => {
         console.log("Erreur :", error);

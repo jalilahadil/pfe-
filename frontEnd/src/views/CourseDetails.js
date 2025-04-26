@@ -75,6 +75,7 @@ export default function CourseDetails() {
       axios.post("http://localhost:8080/subscriptions/postSubscription",demand)
       .then(response=>{
         console.log(response)
+        navigate("/myCourses")
       })
       .catch(error=>{
         console.log(error)
@@ -146,7 +147,7 @@ export default function CourseDetails() {
         <div className="col gap-2 d-flex flex-column">
             <button className="btn-danger btn" onClick={()=>{deleteCourse(course._id)}}> <MdDelete  className='fs-4 mx-2'/>Delete Course</button>
             <button className="btn-warning btn" onClick={()=>{setSelectedCourse(course);setIsShown(true)}}> <FaPen  className='fs-4 mx-2' />Update Course</button>
-            <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2'/>Subscribe To Course</button>
+            <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2' />Subscribe To Course</button>
             <button className="btn-primary btn">
             <Link style={{color:"#fff",textDecoration:"none"}} to={"/cours/updateCourse/"+course._id}>
 

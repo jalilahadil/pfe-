@@ -25,7 +25,7 @@ const subscriptionSchema = new mongoose.Schema({
     },
     terminatedLessons: {
         type: String,
-        default: []
+        default:""
     },
     
 });

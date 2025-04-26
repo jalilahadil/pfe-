@@ -62,9 +62,10 @@ const createSubscription = async (req, res) => {
         const newSubscription = new Subscription({
             courseId,
             studentId,
-            startDate
+            startDate,
+            terminatedLessons:""
         });
-
+        console.log(newSubscription)
         await newSubscription.save();
 
         res.status(201).json({ message: "Subscription created successfully", subscription: newSubscription });
