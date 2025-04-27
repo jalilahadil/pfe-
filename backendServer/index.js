@@ -80,8 +80,10 @@ server.use("/",assignmentRouters);
 // quiz responses Routes
 const quizResponseRouters=require("./routes/quizResponseRoute")
 server.use("/",quizResponseRouters);
-
-/******** STARTING THE CONNECTION WITH THE DATABASE     ***********/
+// stats responses Routes
+const statsRouters=require("./routes/statsRoutes")
+server.use("/",statsRouters);
+/******** STARTING THE CONNECTION WITH THE DATABASE  ***********/
 const connectToDatabase=require("./database/connectDatabase")
 connectToDatabase()
 

@@ -1,9 +1,13 @@
-.subscribeBtn
+.subscribeBtn,.subscribeBtn:hover
 {
  background-color: var(--orangeColor);
  color: #fff;
  font-weight: 500;
  border-radius: 15px 30px 15px 5px;
+}
+.subscribeBtn:hover
+{
+    transform: rotate(12deg) !important;
 }
 .navbar
 {

@@ -7,7 +7,7 @@ import logoImage from "./logo-removebg-preview.png";
 
 export default function Navbar(props) {
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("user");
+  const isLoggedIn = localStorage.getItem("user") != undefined;
   const role = localStorage.getItem("role");
   const isStudent = role === "student" && isLoggedIn;
   const isAdmin = role === "admin" && isLoggedIn;
@@ -37,27 +37,37 @@ export default function Navbar(props) {
                 Home
               </Link>
             </li>
+            {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/gallery">
                 Gallery
               </Link>
-            </li>
+            </li>}
+            
+            {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/latestNews">
                 Latest News
               </Link>
-            </li>
+            </li>}
+            {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/askUs">
                 Ask Us
               </Link>
-            </li>
+            </li>}
+            {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/services">
                 Services
               </Link>
-            </li>
-          
+            </li>}
+            {isLoggedIn==true && 
+            <li className="nav-item">
+              <Link className="nav-link" to="/dashboard">
+                Dashboard
+              </Link>
+            </li>}
             {(isAdmin || isTeacher) && (
               <li className="nav-item">
                 <Link className="nav-link" to="/cours">
@@ -100,7 +110,7 @@ export default function Navbar(props) {
                 </Link>
               </li>
             )}
-            {!isStudent && (
+            {isLoggedIn && !isStudent && (
               <li className="nav-item">
                 <Link className="nav-link" to="/subscribtion">
                   Abonnement
