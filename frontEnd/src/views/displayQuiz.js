@@ -3,13 +3,14 @@ import Navbar from '../components/navbar';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import AddQuestion from '../components/addQuestion';
-
+import { useNavigate } from 'react-router';
 const QuizPage = () => {
   const quizId = useParams().quizId;
+  const navigate=useNavigate()
   const [questions, setQuestions] = useState([]);
   const [totalPoints, setTotalPoints] = useState(0);
   const [answers, setAnswers] = useState({});
-
+  const role=localStorage.getItem("role")
   // Load questions from the API
   const loadQuestions = () => {
     axios
@@ -58,6 +59,7 @@ const QuizPage = () => {
     axios.post("http://localhost:8080/quizReponse/addResponse/",data)
     .then((response)=>{
       console.log(response.data)
+      navigate("/myQuizes")
     })
     .catch((error)=>{
       console.log(error)
@@ -74,7 +76,9 @@ const QuizPage = () => {
       <Navbar color="var(--mainColor)" />
       <div className="container mt-5" style={{ zIndex: '1' }}>
         <h1 className="mb-4">Quiz</h1>
+        {role!="student" && 
         <AddQuestion quizId={quizId} onAddQuestion={loadQuestions} />
+        }
         <form onSubmit={handleSubmit}>
           {questions.map((question, idx) => (
             <div key={question.id} className="card mb-4">
@@ -103,6 +107,7 @@ const QuizPage = () => {
                 </div>
               </div>
 
+              {role!="student" && 
               <div className="actions p-2">
                 <button type="button" className="btn btn-warning mx-2">
                   Update Question
@@ -111,15 +116,18 @@ const QuizPage = () => {
                   Delete Question
                 </button>
               </div>
+              }
             </div>
           ))}
+          {role=="student" && 
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-success btn-lg">
               Submit Quiz
             </button>
           </div>
+          }
         </form>
-        {totalPoints > 0 && (
+        {role=="student" &&   totalPoints > 0 && (
           <div className="mt-4 text-center">
             <h3>Total Points: {totalPoints}</h3>
           </div>

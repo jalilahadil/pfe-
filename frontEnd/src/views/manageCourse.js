@@ -54,7 +54,9 @@ export default function ManageCourse() {
               <div className="text-center mb-5">
                 <h6 className="section-title bg-white text-center specialText px-3">Cours</h6>
                 <h1 className="mb-5">Gérer les Chapitres </h1>
-                <CreateChapterModal courseId={courseId} onUpdate={loadData}></CreateChapterModal>
+                {
+                  (course.creatorId==user._id || role=="admin" ) && <CreateChapterModal courseId={courseId} onUpdate={loadData}></CreateChapterModal>
+                }
               </div>
               <div className="row d-flex justify-content-center ">
                 {chapters.length>0 &&  chapters.map((chapter,index)=>{
@@ -64,10 +66,11 @@ export default function ManageCourse() {
                        <h5 class="card-title fw-semibold mb-2">{ chapter.title  }...</h5>
                        <p class="card-text text-muted small">{chapter.description }</p>
                        <div className="actions d-flex  column-gap-2">
-                       <button className="btn btn-danger mx-2 p-1" onClick={()=>{deleteChapter(chapter._id)}}>Supprimer Chapitre </button>
-                       <button className="btn btn-warning mx-2 p-1" onClick={()=>{setSelectedChapter(chapter);setUpdateMode(true)}}>Modifier Chapitre </button>
+                        {(course.creatorId==user._id || role=="admin" ) && <button className="btn btn-danger mx-2 p-1" onClick={()=>{deleteChapter(chapter._id)}}>Supprimer Chapitre </button>}
+                        {(course.creatorId==user._id  ) && <button className="btn btn-warning mx-2 p-1" onClick={()=>{setSelectedChapter(chapter);setUpdateMode(true)}}>Modifier Chapitre </button>}
+                      {role=="student" && 
                        <button className="btn btn-primary mx-2 p-1 " ><Link style={{textDecoration:"none",color:"#fff"}} to={"/chapter/manageContent/" + chapter._id}
-                       >Poursuivre avec Ce Chapitre </Link></button>
+                       >Poursuivre avec Ce Chapitre </Link></button>}
                        </div>
                      </div>
                    </div>

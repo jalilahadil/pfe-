@@ -12,6 +12,7 @@ function PersonalProfileCours() {
   const [show, setShow] = useState(false);
   const [courses,setCourses]=useState([])
   const user = JSON.parse(localStorage.getItem("user"));
+  const role = localStorage.getItem("role");
   const [categories,setCategories]=useState([]);
   const loadCategories=()=>{
     axios.get("http://localhost:8080/categories/getAllCategories/")
@@ -49,7 +50,7 @@ function PersonalProfileCours() {
     
     <Navbar color="var(--mainColor)"></Navbar>
 
-
+    {role=="admin" && 
       <div className="container-xxl py-5 category">
         <div className="container">
           <div className="text-center mb-5">
@@ -65,6 +66,7 @@ function PersonalProfileCours() {
           </div>
         </div>
       </div>
+    }
       <div className="container-xxl py-5">
       <div className="container">
         <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -73,7 +75,9 @@ function PersonalProfileCours() {
             
         </div>
         <div className="container-fluid d-flex justify-content-center p-2 ">
+        {role=="admin" && 
         <AddCourse onUpdate={()=>{loadCourses()}}></AddCourse>
+        }
         </div>
         <div className="row g-4 justify-content-center">
           {courses.map((course, index) => (
@@ -82,8 +86,7 @@ function PersonalProfileCours() {
                 <div className="position-relative overflow-hidden">
                   <img className="img-fluid" src="https://placehold.co/600x400" alt={`Course ${index + 1}`} />
                   <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                    <a href={"/cours/courseDetails/"+course._id} className="flex-shrink-0 btn btn-sm specialButton px-3 border-end" style={{ borderRadius: '30px 0 0 30px' }}>Read More</a>
-                    <a href={"/cours/courseDetails/"+course._id} className="flex-shrink-0 btn btn-sm specialButton px-3" style={{ borderRadius: '0 30px 30px 0' }}>Join Now</a>
+                    <a href={"/cours/courseDetails/"+course._id} className="flex-shrink-0 btn btn-sm specialButton px-3" style={{ borderRadius: '30px' }}>See Details</a>
                   </div>
                 </div>
                 <div className="text-center p-4 pb-0">

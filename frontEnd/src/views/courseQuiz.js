@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function CourseQuiz() {
   const { lessonId } = useParams();
   const user = JSON.parse(localStorage.getItem("user"));
+  const role = localStorage.getItem("role");
   const [quizes, setQuizes] = useState([]);
   const [updateQuiz, setUpdateQuiz] = useState(null);
   const navigate=useNavigate("")
@@ -48,7 +49,8 @@ export default function CourseQuiz() {
           <div className="text-center mb-5">
             <h6 className="section-title bg-white text-center specialText px-3">Questions à Choix Multiples</h6>
             <h1 className="mb-5">Quiz</h1>
-            <NewQuiz lessonId={lessonId} onAddQuizz={loadQuizzes} />
+            {role!="student" && 
+            <NewQuiz lessonId={lessonId} onAddQuizz={loadQuizzes} />}
           </div>
           <div className="row g-3">
             {quizes.length > 0 ? quizes.map((quiz, index) => (
@@ -64,10 +66,10 @@ export default function CourseQuiz() {
                     <p className='p-2'>{quiz.description.slice(0, 50)}...</p>
                   </div>
                   <div className="d-flex justify-content-center p-3">
-                    <button className='btn btn-danger mx-2' onClick={() => deleteQuiz(quiz._id)}>Delete Quiz</button>
-                    <button className='btn btn-primary mx-2' onClick={() => {navigate("/quiz/displayQuiz/"+quiz._id)}}>Start Quiz</button>
-                    <button className='btn btn-primary mx-2' onClick={() => {navigate("/quiz/displayQuiz/"+quiz._id)}}>Manage Quiz</button>
-                    <button className='btn btn-warning mx-2' onClick={() => setUpdateQuiz(quiz)}>Update Quiz</button>
+                    {role !="student" && <button className='btn btn-danger mx-2' onClick={() => deleteQuiz(quiz._id)}>Delete Quiz</button>}
+                    {role =="student" && <button className='btn btn-primary mx-2' onClick={() => {navigate("/quiz/displayQuiz/"+quiz._id)}}>Start Quiz</button> }
+                    {role !="student" && <button className='btn btn-primary mx-2' onClick={() => {navigate("/quiz/displayQuiz/"+quiz._id)}}>Manage Quiz</button>}
+                    {role !="student" && <button className='btn btn-warning mx-2' onClick={() => setUpdateQuiz(quiz)}>Update Quiz</button>}
                   </div>
                 </div>
               </div>

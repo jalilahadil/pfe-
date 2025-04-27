@@ -85,6 +85,7 @@ export default function MyCourses() {
              <div className="text-center mb-5">
                <h6 className="section-title bg-white text-center specialText px-3">Cours</h6>
                <h1 className="mb-5">Mes Cours</h1>
+               <button className="btn btn-primary" onClick={()=>{navigate("/cours")}}>Participer à un nouveau cours</button>
              </div>
              <div className="container-fluid d-flex flex-wrap justify-content-center column-gap-3">
                     {mergedData.map((sub) => (

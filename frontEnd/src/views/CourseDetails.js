@@ -145,9 +145,17 @@ export default function CourseDetails() {
         
  
         <div className="col gap-2 d-flex flex-column">
+          {(course.creatorId==user._id || role=="admin") && 
             <button className="btn-danger btn" onClick={()=>{deleteCourse(course._id)}}> <MdDelete  className='fs-4 mx-2'/>Delete Course</button>
+          }
+          {(course.creatorId==user._id || role=="admin") &&
             <button className="btn-warning btn" onClick={()=>{setSelectedCourse(course);setIsShown(true)}}> <FaPen  className='fs-4 mx-2' />Update Course</button>
-            <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2' />Subscribe To Course</button>
+          } 
+          {
+            role=="student" && <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2' />Subscribe To Course</button>
+
+          }
+            {(course.creatorId==user._id || role=="admin") &&
             <button className="btn-primary btn">
             <Link style={{color:"#fff",textDecoration:"none"}} to={"/cours/updateCourse/"+course._id}>
 
@@ -155,7 +163,7 @@ export default function CourseDetails() {
                Manage  Content
                </Link>
                </button>
-
+            }
             
  
         </div>
