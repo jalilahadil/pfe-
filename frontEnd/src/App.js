@@ -24,6 +24,9 @@ import Subscribtion from './views/Subscribtion.js';
 import Exercices from './views/Exercices.js';
 import SolveExercice from './solveExercice.js';
 import MyExercices from './views/myExercices.js';
+import DisplayQuiz from './views/displayQuiz.js';
+import CourseQuiz from './views/courseQuiz.js';
+import MyQuizes from './views/myQuizes.js';
 
 function App() {
   return (
@@ -54,6 +57,9 @@ function App() {
         <Route path='/subscribtion/' element={<Subscribtion />} /> 
         <Route path='/exercice/solveExercice/:id' element={<SolveExercice />} /> 
         <Route path='/exercice/myExercices/' element={<MyExercices />} /> 
+        <Route path='/quiz/lessonQuizs/:lessonId' element={<CourseQuiz />} /> 
+        <Route path='/quiz/displayQuiz/:quizId' element={<DisplayQuiz />} /> 
+        <Route path='/myQuizes' element={<MyQuizes />} /> 
         
         
       </Routes>

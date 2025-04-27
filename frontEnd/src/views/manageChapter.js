@@ -138,6 +138,9 @@ export default function ManageChapter() {
                                     <Link className="btn btn-dark  my-1 mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/lesson/viewLessonExercices/${lesson._id}`}>
                                     <SiExercism className='mx-1 fs-4'/>  Exercices
                                     </Link>
+                                    <Link className="btn btn-info  my-1 mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/quiz/lessonQuizs/${lesson._id}`}>
+                                    <SiExercism className='mx-1 fs-4'/>  Quizs
+                                    </Link>
                                 </div>
                             </div>
                         </div>

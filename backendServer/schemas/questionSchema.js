@@ -18,8 +18,7 @@ const questionSchema = new mongoose.Schema({
         required: true
     },
     quizId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Quiz',
+        type: String,
         required: true
     }
 });

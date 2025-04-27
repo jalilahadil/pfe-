@@ -1,4 +1,4 @@
-const {Question}=require("../schemas/questionSchema");
+const Question=require("../schemas/questionSchema");
 // 🔍 Search: Retrieves a specific question by its unique ID
 const getQuestionById = async (req, res) => {
     try {
@@ -16,6 +16,7 @@ const getQuestionById = async (req, res) => {
 // 🔍 Search: Retrieves all questions associated with a specific quiz ID
 const getQuestionsByQuizId = async (req, res) => {
     try {
+        
         const questions = await Question.find({ quizId: req.params.quizId });
 
         if (!questions || questions.length === 0) {
@@ -39,7 +40,12 @@ const getAllQuestions = async (req, res) => {
 // ➕ Add: Creates a new question and saves it to the database
 const createQuestion = async (req, res) => {
     try {
-        const { text, options, correctAnswer, points, quizId } = req.body;
+        console.log(req.body)
+        const { text,
+            options,
+            correctAnswer,
+            points,
+            quizId ,} = req.body;
 
         const newQuestion = new Question({
             text,

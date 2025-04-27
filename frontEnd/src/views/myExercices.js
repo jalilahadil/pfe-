@@ -10,7 +10,8 @@ export default function MyExercices() {
   const [responses, setResponses] = useState([]);
   const [responsesAT, setResponsesAT] = useState([]);
   const user = JSON.parse(localStorage.getItem('user'));
-const loadResponses = () => {
+  const role=localStorage.getItem("role")
+  const loadResponses = () => {
   axios.get(`http://localhost:8080/assignment/getAssignmentByUserId/${user._id}`)
     .then((response) => {
       console.log(response.data);
@@ -99,6 +100,7 @@ const handleUpdateSubmitAT = (e) => {
   return (
     <>
       <Navbar color="var(--mainColor)" />
+      {role=="student" && 
       <section className="asTeacherSection">
         <h4 className='text-center p-3'>My Exercices As Student</h4>
         <table className="table table-striped table-hover">
@@ -207,7 +209,8 @@ const handleUpdateSubmitAT = (e) => {
         )}
 
       </section>
-
+      }
+      {role!="student" && 
       <section className="asStudentSection">
         <h4 className='text-center p-3'>My Exercices As Teacher</h4>
         <table className="table table-striped table-hover">
@@ -240,6 +243,7 @@ const handleUpdateSubmitAT = (e) => {
           </tbody>
         </table>
       </section>
+      }
       {updatedAssignmentAT && (
           <div className="modal fade show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }} tabIndex="-1">
             <div className="modal-dialog">

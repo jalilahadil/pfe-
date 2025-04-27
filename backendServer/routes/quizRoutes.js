@@ -19,7 +19,7 @@ router.get("/quizzes/getByLessonId/:lessonId", getQuizzesByLessonId);
 router.get("/quizzes/getAll", getAllQuizzes);
 
 // ➕ Create a new quiz
-router.post("/quizzes", createQuiz);
+router.post("/quizzes/postNewQuiz/", createQuiz);
 
 // ❌ Delete a quiz by ID
 router.delete("/quizzes/deleteOne/:id", deleteQuiz);

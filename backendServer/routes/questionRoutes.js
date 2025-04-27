@@ -19,7 +19,7 @@ router.get("/questions/getByQuizId/:quizId", getQuestionsByQuizId);
 router.get("/questions/getAll", getAllQuestions);
 
 // ➕ Create a new question
-router.post("/questions", createQuestion);
+router.post("/questions/postNewQuestion/", createQuestion);
 
 // ❌ Delete a question by ID
 router.delete("/questions/deleteOne/:id", deleteQuestion);

@@ -4,5 +4,11 @@
     "@cloudinary/url-gen": "^1.21.0",
     "bcrypt": "^5.1.1",
     "js-cookie": "^3.0.5"
+  },
+  "scripts": {
+    "start": "concurrently \"cd frontEnd && npm start\" \"cd backendServer && npm start\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

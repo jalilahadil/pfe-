@@ -1,4 +1,4 @@
-const {Quiz}=require("../schemas/quizSchema");
+const Quiz=require("../schemas/quizSchema");
 // 🔍 Search: Retrieves a specific quiz by its unique ID
 const getQuizById = async (req, res) => {
     try {
@@ -16,6 +16,7 @@ const getQuizById = async (req, res) => {
 // 🔍 Search: Retrieves all quizzes associated with a specific lesson ID
 const getQuizzesByLessonId = async (req, res) => {
     try {
+        console.log(req.params.lessonId)
         const quizzes = await Quiz.find({ lessonId: req.params.lessonId });
 
         if (!quizzes || quizzes.length === 0) {
