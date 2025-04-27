@@ -87,13 +87,22 @@ const createStudent = async (req, res) => {
 // 🔄 Update: Updates an existing student's information based on their ID
 const updateStudent = async (req, res) => {
     try {
-        const user  = req.body;
-        console.log(user._id)
-        const test =await Student.findById(user._id)
-        console.log(test)
+        const {userLastName,
+            userFirstName,
+            userBirthDate,
+            userEmail,
+            userPassowrd,
+            userPhoneNumber,}=req.body
+        const data={userLastName,
+            userFirstName,
+            userBirthDate,
+            userEmail,
+            userPassowrd,
+            userPhoneNumber}
+      
         const updatedStudent = await Student.findByIdAndUpdate(
             user._id,
-             user ,
+            data ,
             { new: true, runValidators: true }
         );
         if (!updatedStudent) {

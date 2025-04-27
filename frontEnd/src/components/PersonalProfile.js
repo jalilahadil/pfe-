@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Modal, Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-function PersonalProfile() {
+function PersonalProfile(props) {
   const [show, setShow] = useState(false);
-  const user=JSON.parse(localStorage.getItem("user"));
+  const role=localStorage.getItem("role")
+  const user=props.user;
   const [profile, setProfile] = useState({
-    userId:user.userId ,
-    nom: user.userLastName,
-    prenom: user.userFirstName,
-    dateNaissance: new Date(user.userBirthDate).toISOString().split('T')[0],
-    age: user.userAge,
-    email: user.userEmail,
-    motDePasse: user.userPassowrd,
-    numeroTelephone: user.userPhoneNumber
+    id:JSON.parse(localStorage.getItem("user")).id ,
+    userLastName: user.userLastName,
+    userFirstName: user.userFirstName,
+    userBirthDate: new Date(user.userBirthDate).toISOString().split('T')[0],
+    userEmail: user.userEmail,
+    userPassowrd: user.userPassowrd,
+    userPhoneNumber: user.userPhoneNumber
   });
   
   const [validated, setValidated] = useState(false);
@@ -25,14 +25,7 @@ function PersonalProfile() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === 'age') {
-      const onlyDigits = value.replace(/\D/g, '').substring(0, 2);
-      setProfile({ ...profile, [name]: onlyDigits });
-      setCustomErrors({
-        ...customErrors,
-        age: onlyDigits.length !== 2 ? "L'âge doit contenir exactement 2 chiffres" : ''
-      });
-    } else if (name === 'numeroTelephone') {
+    if (name === 'numeroTelephone') {
       const onlyDigits = value.replace(/\D/g, '').substring(0, 8);
       setProfile({ ...profile, [name]: onlyDigits });
       setCustomErrors({
@@ -94,7 +87,9 @@ function PersonalProfile() {
   const updateProfile = () => {
     console.log(profile);
     
-    axios.put("http://localhost:3030/Utilisateur/updateUtilisateur/" + user.userId, profile)
+    if(role=="admin")
+    {
+     axios.put("http://localhost:8080/administrators/updateOne/" + profile.id, profile)
       .then(response => {
         console.log(response.data);
         localStorage.setItem("user", JSON.stringify(profile));
@@ -103,6 +98,31 @@ function PersonalProfile() {
       .catch(error => {
         console.log(error);
       });
+    }
+    else if(role=="teacher")
+      {
+        axios.put("http://localhost:8080/teachers/updateOne/" + profile.id, profile)
+        .then(response => {
+          console.log(response.data);
+          localStorage.setItem("user", JSON.stringify(profile));
+          setShow(false); 
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      }
+      else 
+        {
+          axios.put("http://localhost:8080/teachers/updateOne/" + profile.id, profile)
+          .then(response => {
+            console.log(response.data);
+            localStorage.setItem("user", JSON.stringify(profile));
+            setShow(false); 
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        }
   };
   
   return (
@@ -125,9 +145,9 @@ function PersonalProfile() {
                     <Form.Control
                       required
                       type="text"
-                      name="nom"
-                      value={profile.nom}
+                      name="userLastName"
                       onChange={handleChange}
+                      value={profile.userLastName}
                       placeholder="Entrez votre nom"
                     />
                     <Form.Control.Feedback type="invalid">Veuillez entrer votre nom.</Form.Control.Feedback>
@@ -139,8 +159,8 @@ function PersonalProfile() {
                     <Form.Control
                       required
                       type="text"
-                      name="prenom"
-                      value={profile.prenom}
+                      name="userFirstName"
+                      value={profile.userFirstName}
                       onChange={handleChange}
                       placeholder="Entrez votre prénom"
                     />
@@ -154,35 +174,22 @@ function PersonalProfile() {
                 <Form.Control
                   required
                   type="date"
-                  name="dateNaissance"
-                  value={profile.dateNaissance}
+                  name="userBirthDate"
+                  value={profile.userBirthDate}
                   onChange={handleChange}
                 />
                 <Form.Control.Feedback type="invalid">Veuillez entrer votre date de naissance.</Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group style={formGroupStyle} controlId="age">
-                <Form.Label>Âge</Form.Label>
-                <Form.Control
-                  type="text"
-                  inputMode="numeric"
-                  name="age"
-                  value={profile.age}
-                  onChange={handleChange}
-                  placeholder="Entrez votre âge (2 chiffres)"
-                  isInvalid={!!customErrors.age}
-                  maxLength="2"
-                />
-                {customErrors.age && <div style={errorTextStyle}>{customErrors.age}</div>}
-              </Form.Group>
+              
 
               <Form.Group style={formGroupStyle} controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   required
                   type="email"
-                  name="email"
-                  value={profile.email}
+                  name="userEmail"
+                  value={profile.userEmail}
                   onChange={handleChange}
                   placeholder="Entrez votre email"
                 />
@@ -195,8 +202,8 @@ function PersonalProfile() {
                 <Form.Control
                   type="text"
                   inputMode="numeric"
-                  name="numeroTelephone"
-                  value={profile.numeroTelephone}
+                  name="userPhoneNumber"
+                  value={profile.userPhoneNumber}
                   onChange={handleChange}
                   placeholder="Entrez votre numéro de téléphone (8 chiffres)"
                   isInvalid={!!customErrors.numeroTelephone}

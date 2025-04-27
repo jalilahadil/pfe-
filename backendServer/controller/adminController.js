@@ -1,4 +1,4 @@
-const {Administrator}=require("../schemas/adminSchema");
+const Administrator=require("../schemas/adminSchema");
 // 🔍 Search: Retrieves an administrator by their unique ID
 const getAdministratorById = async (req, res) => {
     try {
@@ -57,11 +57,22 @@ const createAdministrator = async (req, res) => {
 // 🔄 Update: Updates an existing administrator's department or access level
 const updateAdministrator = async (req, res) => {
     try {
+        const {userLastName,
+            userFirstName,
+            userBirthDate,
+            userEmail,
+            userPassowrd,
+            userPhoneNumber,}=req.body
+        const data={userLastName,
+            userFirstName,
+            userBirthDate,
+            userEmail,
+            userPassowrd,
+            userPhoneNumber}
         const updatedAdministrator = await Administrator.findByIdAndUpdate(
-            req.params.id,
-           
+            req.params.id,data
+            
         );
-
         if (!updatedAdministrator) {
             return res.status(404).json({ error: "Administrator not found" });
         }

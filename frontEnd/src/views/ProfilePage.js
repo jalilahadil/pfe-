@@ -30,7 +30,7 @@ const ProfilePage = () => {
 
             
             <div style={{ marginTop: '10px' }}>
-              <PersonalProfile></PersonalProfile>
+              <PersonalProfile user={user}></PersonalProfile>
             </div>
 
             

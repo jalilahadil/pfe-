@@ -86,11 +86,22 @@ const createTeacher = async (req, res) => {
 // 🔄 Update: Updates an existing teacher's information (specialty, teaching level, years of experience)
 const updateTeacher = async (req, res) => {
     try {
-        const user = req.body;
+        const {userLastName,
+            userFirstName,
+            userBirthDate,
+            userEmail,
+            userPassowrd,
+            userPhoneNumber,}=req.body
+        const data={userLastName,
+            userFirstName,
+            userBirthDate,
+            userEmail,
+            userPassowrd,
+            userPhoneNumber}
 
         const updatedTeacher = await Teacher.findByIdAndUpdate(
             req.params.id,
-            user,
+            data,
             { new: true, runValidators: true }
         );
 
