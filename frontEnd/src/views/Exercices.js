@@ -75,8 +75,10 @@ export default function Exercices() {
           
 
 
-          <div className="action d-flex justify-content-betweens">
+          <div className="action d-flex justify-content-center">
+            {role=="student" && 
             <button className="btn btn-primary p-1 mx-1" onClick={()=>{startExercice(exercice._id)}}><MdStart className="p-0 " />Commencer</button>
+            }
             <UpdateExercice lessonId={lessonId} exercice={exercice} onUpdate={loadExercices} isShow={false}></UpdateExercice>
 
             <button className="btn btn-danger p-1 mx-1" onClick={()=>{deleteExercice(exercice._id)}}><MdDelete className="" /> Supprimer</button>
