@@ -49,7 +49,7 @@ export default function Subscribtion() {
             </tr>
           </thead>
           <tbody>
-            {subs.map((subscribe, index) => (
+            {subs.map.length>0 &&  subs.map((subscribe, index) => (
               <tr key={index}>
                 <td>{subscribe.studentInfo?.userFirstName} {subscribe.studentInfo?.userLastName}</td>
                 <td>
@@ -57,7 +57,7 @@ export default function Subscribtion() {
                     ? `${subscribe.courseInfo.creatorInfo.userFirstName} ${subscribe.courseInfo.creatorInfo.userLastName}`
                     : 'N/A'}
                 </td>
-                <td>{(subscribe.courseInfo.title).slice(0,25)}</td>
+                <td>{(subscribe.courseInfo.title) }</td>
                 <td>{new Date(subscribe.subscribedAt).toLocaleDateString()}</td>
                 <td>{subscribe.subscribedStatus}</td>
                 <td>{subscribe.totalPoints}</td>

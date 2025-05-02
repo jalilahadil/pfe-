@@ -6,6 +6,8 @@ import Navbar from '../components/navbar';
 import axios from "axios";
 import CreateChapterModal from '../components/addChpater';
 import UpdateChapterModal from '../components/updateChapter';
+import chapterImage from "../assets/courseChapter.png"
+
 export default function ManageCourse() {
     const courseId=useParams().id;
     const [course,setCourse]=useState({});
@@ -61,14 +63,14 @@ export default function ManageCourse() {
               <div className="row d-flex justify-content-center ">
                 {chapters.length>0 &&  chapters.map((chapter,index)=>{
                     return  <div class="card shadow-sm border-0 rounded-4" key={index} style={{maxWidth: "24rem"}}>
-                     <img src="https://placehold.co/600x400" class="card-img-top" alt="Chapter" style={{height: "12rem", objectFit: "cover" }}/>
+                     <img src={chapterImage} class="card-img-top" alt="Chapter" style={{height: "12rem", objectFit: "cover" }}/>
                      <div class="card-body">
                        <h5 class="card-title fw-semibold mb-2">{ chapter.title  }...</h5>
                        <p class="card-text text-muted small">{chapter.description }</p>
                        <div className="actions d-flex  column-gap-2">
                         {(course.creatorId==user._id || role=="admin" ) && <button className="btn btn-danger mx-2 p-1" onClick={()=>{deleteChapter(chapter._id)}}>Supprimer Chapitre </button>}
                         {(course.creatorId==user._id  ) && <button className="btn btn-warning mx-2 p-1" onClick={()=>{setSelectedChapter(chapter);setUpdateMode(true)}}>Modifier Chapitre </button>}
-                      {role=="student" && 
+                      {role!="" && 
                        <button className="btn btn-primary mx-2 p-1 " ><Link style={{textDecoration:"none",color:"#fff"}} to={"/chapter/manageContent/" + chapter._id}
                        >Poursuivre avec Ce Chapitre </Link></button>}
                        </div>

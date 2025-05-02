@@ -31,7 +31,7 @@ import Dashboard from './views/dashboard.js';
 
 function App() {
   const role = localStorage.getItem("role"); // or check if user is logged in
-  const isLoggedIn = role !== null; // Check if the user is logged in (you can refine this based on your authentication logic)
+  const isLoggedIn = role != null; // Check if the user is logged in (you can refine this based on your authentication logic)
   return (
     <Routes>
       {/* Public Routes */}
@@ -47,83 +47,83 @@ function App() {
       {/* Protected Routes */}
       <Route
         path='/profile'
-        element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+        element={ <Profile />} 
       />
       <Route
         path='/notification'
-        element={isLoggedIn ? <NotificationManager /> : <Navigate to="/login" />}
+        element={ <NotificationManager /> }
       />
       <Route
         path='/cours'
-        element={isLoggedIn ? <Cours /> : <Navigate to="/login" />}
+        element={ <Cours />}
       />
       <Route
         path='/cours/courseDetails/:id'
-        element={isLoggedIn ? <CourseDetails /> : <Navigate to="/login" />}
+        element={ <CourseDetails /> }
       />
       <Route
         path='/etudiants'
-        element={isLoggedIn ? <Etudiants /> : <Navigate to="/login" />}
+        element={ <Etudiants /> }
       />
       <Route
         path='/enseignants'
-        element={isLoggedIn ? <Teachers /> : <Navigate to="/login" />}
+        element={ <Teachers />}
       />
       <Route
         path='/myCourses'
-        element={isLoggedIn ? <MyCourses /> : <Navigate to="/login" />}
+        element={ <MyCourses /> }
       />
       <Route
         path='/cours/updateCourse/:id'
-        element={isLoggedIn ? <CourseStructure /> : <Navigate to="/login" />}
+        element={<CourseStructure />}
       />
       <Route
         path='/chapter/manageContent/:id'
-        element={isLoggedIn ? <ManageChapter /> : <Navigate to="/login" />}
+        element={ <ManageChapter /> }
       />
       <Route
         path='/lesson/addNewOne/:id'
-        element={isLoggedIn ? <AddNewLesson /> : <Navigate to="/login" />}
+        element={ <AddNewLesson /> }
       />
       <Route
         path='/lesson/viewLesson/:id/:courseId/:chapterId'
-        element={isLoggedIn ? <DisplayLesson /> : <Navigate to="/login" />}
+        element={ <DisplayLesson />}
       />
       <Route
         path='/lesson/viewLessonExercices/:id'
-        element={isLoggedIn ? <Exercices /> : <Navigate to="/login" />}
+        element={<Exercices />}
       />
       <Route
         path='/lesson/updateLesson/:id/'
-        element={isLoggedIn ? <UpdateLesson /> : <Navigate to="/login" />}
+        element={ <UpdateLesson />}
       />
       <Route
         path='/subscribtion/'
-        element={isLoggedIn ? <Subscribtion /> : <Navigate to="/login" />}
+        element={<Subscribtion /> }
       />
       <Route
         path='/exercice/solveExercice/:id'
-        element={isLoggedIn ? <SolveExercice /> : <Navigate to="/login" />}
+        element={<SolveExercice /> }
       />
       <Route
         path='/exercice/myExercices/'
-        element={isLoggedIn ? <MyExercices /> : <Navigate to="/login" />}
+        element={<MyExercices /> }
       />
       <Route
         path='/quiz/lessonQuizs/:lessonId'
-        element={isLoggedIn ? <CourseQuiz /> : <Navigate to="/login" />}
+        element={<CourseQuiz /> }
       />
       <Route
         path='/quiz/displayQuiz/:quizId'
-        element={isLoggedIn ? <DisplayQuiz /> : <Navigate to="/login" />}
+        element={<DisplayQuiz /> }
       />
       <Route
         path='/myQuizes'
-        element={isLoggedIn ? <MyQuizes /> : <Navigate to="/login" />}
+        element={<MyQuizes /> }
       />
       <Route
         path='/dashboard'
-        element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />}
+        element={<Dashboard /> }
       />
     </Routes>
   );

@@ -42,7 +42,19 @@ const QuizPage = () => {
     });
     setTotalPoints(points); // Set total points after checking answers
   };
+  const updateQuestion=(questionId)=>{
 
+  }
+  const deleteQuestion=(questionId)=>{
+    axios.delete("http://localhost:8080/questions/deleteOne/"+questionId)
+    .then((response)=>{
+      console.log(response)
+      loadQuestions()
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
   // Handle form submission
   const handleSubmit = (e) => {
     setTotalPoints(0)
@@ -109,10 +121,10 @@ const QuizPage = () => {
 
               {role!="student" && 
               <div className="actions p-2">
-                <button type="button" className="btn btn-warning mx-2">
+                <button type="button" className="btn btn-warning mx-2" onClick={()=>{updateQuestion(question._id)}}>
                   Update Question
                 </button>
-                <button type="button" className="btn btn-danger">
+                <button type="button" className="btn btn-danger" onClick={()=>{deleteQuestion(question._id)}}>
                   Delete Question
                 </button>
               </div>

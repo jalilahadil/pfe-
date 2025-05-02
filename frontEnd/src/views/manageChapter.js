@@ -8,7 +8,7 @@ import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { MdStart } from "react-icons/md";
 import { SiExercism } from "react-icons/si";
-
+import chapterImage from "../assets/courseChapter.png"
 
 
 import { Link } from 'react-router-dom'
@@ -122,11 +122,11 @@ export default function ManageChapter() {
 
 
                                 <div className="actions d-flex column-gap-2 flex-wrap justify-content-center ">
-                                    {(course.creatorId==user._id || role=="admin" ) && 
+                                    {(course.creatorId==user._id || role!="student" ) && 
                                     <button className="btn btn-danger mx-2 my-1 p-1" onClick={() => deleteLesson(lesson._id)}>
                                     <MdDelete className='mx-1 fs-4'/> Supprimer 
                                         </button>}
-                                    {(course.creatorId==user._id || role=="admin" ) && 
+                                    {(course.creatorId==user._id || role!="student" ) && 
                                         <button className="btn btn-warning mx-2 my-1 p-1" onClick={() => { setSelectedLesson(lesson); setUpdateMode(true); }}>
                                         <Link className=" mx-2 p-1"
                                         style={{ textDecoration: "none", color: "#fff" }}
@@ -139,15 +139,15 @@ export default function ManageChapter() {
                                     <MdStart className='mx-1 fs-4'/>  Commencer 
                                     </Link>
                                     }
-                                    { role=="student"  &&  
+                               
                                     <Link className="btn btn-dark  my-1 mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/lesson/viewLessonExercices/${lesson._id}`}>
                                     <SiExercism className='mx-1 fs-4'/>  Exercices
                                     </Link>
-                                    &&
+                                    
                                     <Link className="btn btn-info  my-1 mx-2 p-1" style={{ textDecoration: "none", color: "#fff" }} to={`/quiz/lessonQuizs/${lesson._id}`}>
                                     <SiExercism className='mx-1 fs-4'/>  Quizz
                                     </Link>
-                                    }
+                                    
                                 </div>
                             </div>
                         </div>

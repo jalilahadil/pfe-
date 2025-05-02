@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import courseImage from "../assets/KID ROCK.png"
 import "./styles/coursesPage.css"
-import image from "../assets/img/undraw_learning-sketchingsh.png"
 import CategoryBox from '../components/categoryBox';
 import axios from 'axios';
 import Navbar from '../components/navbar';
@@ -75,7 +74,7 @@ function PersonalProfileCours() {
             
         </div>
         <div className="container-fluid d-flex justify-content-center p-2 ">
-        {role=="admin" && 
+        {role!="student" && 
         <AddCourse onUpdate={()=>{loadCourses()}}></AddCourse>
         }
         </div>
@@ -84,7 +83,7 @@ function PersonalProfileCours() {
             <div className="col-lg-4 col-md-6 wow fadeInUp"  key={index}>
               <div className="course-item bg-light">
                 <div className="position-relative overflow-hidden">
-                  <img className="img-fluid" src="https://placehold.co/600x400" alt={`Course ${index + 1}`} />
+                  <img className="img-fluid" src={courseImage} alt={`Course ${index + 1}`} />
                   <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                     <a href={"/cours/courseDetails/"+course._id} className="flex-shrink-0 btn btn-sm specialButton px-3" style={{ borderRadius: '30px' }}>See Details</a>
                   </div>
