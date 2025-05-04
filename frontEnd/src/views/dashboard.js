@@ -4,7 +4,7 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 import Navbar from '../components/navbar';
 import axios from "axios"
 
-// Registering chart.js components
+// Enregistrement des composants chart.js
 ChartJS.register(
   Title,
   Tooltip,
@@ -48,17 +48,17 @@ const DashboardMetrics = () => {
     loadData();
   }, []);
 
-  // Additional Metrics
+  // Métriques supplémentaires
   const exercisesPerCourse = (data.statExercice / data.statCours).toFixed(2);
   const lessonsPerCategory = (data.statLesson / data.statCategory).toFixed(2);
   const chaptersPerCourse = (data.statChapter / data.statCours).toFixed(2);
 
-  // Prepare Data for Charts
+  // Préparer les données pour les graphiques
   const barChartData = {
-    labels: ['Students', 'Teachers', 'Exercises', 'Courses', 'Categories', 'Lessons'],
+    labels: ['Étudiants', 'Enseignants', 'Exercices', 'Cours', 'Catégories', 'Leçons'],
     datasets: [
       {
-        label: 'Counts',
+        label: 'Comptes',
         data: [
           data.statStudent,
           data.statTeacher,
@@ -75,7 +75,7 @@ const DashboardMetrics = () => {
   };
 
   const pieChartData = {
-    labels: ['Lesson Assignments', 'Chapter Subscriptions', 'Quiz Responses'],
+    labels: ['Devoirs de Leçons', 'Abonnements de Chapitres', 'Réponses aux Quiz'],
     datasets: [
       {
         data: [data.assignmentLesson, data.subscriptionChapter, data.quizResponse],
@@ -85,11 +85,11 @@ const DashboardMetrics = () => {
   };
 
   const lineChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May'],
+    labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
     datasets: [
       {
-        label: 'Student Growth',
-        data: [2, 3, 5, 7, 10], // Simulating student count growth
+        label: 'Croissance des Étudiants',
+        data: [2, 3, 5, 7, 10], // Simulation de la croissance du nombre d'étudiants
         borderColor: 'rgba(75, 192, 192, 1)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         fill: true,
@@ -98,11 +98,11 @@ const DashboardMetrics = () => {
   };
 
   const radarChartData = {
-    labels: ['Exercises', 'Lessons', 'Chapters', 'Assignments', 'Responses'],
+    labels: ['Exercices', 'Leçons', 'Chapitres', 'Devoirs', 'Réponses'],
     datasets: [
       {
         label: 'Performance',
-        data: [80, 70, 90, 60, 85], // Random performance data
+        data: [80, 70, 90, 60, 85], // Données de performance aléatoires
         backgroundColor: 'rgba(255, 99, 132, 0.6)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
@@ -111,7 +111,7 @@ const DashboardMetrics = () => {
   };
 
   const doughnutChartData = {
-    labels: ['Assigned Lessons', 'Unassigned Lessons'],
+    labels: ['Leçons Assignées', 'Leçons Non Assignées'],
     datasets: [
       {
         data: [data.assignmentLesson, data.statLesson - data.assignmentLesson],
@@ -124,15 +124,15 @@ const DashboardMetrics = () => {
     <>
       <Navbar color="var(--mainColor)" />
       <div style={{ padding: '20px', background: '#f5f7fa', minHeight: '100vh' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>Dashboard Metrics</h1>
+        <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>Métriques du Tableau de Bord</h1>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)', // Data boxes in one row (3 items)
+            gridTemplateColumns: 'repeat(3, 1fr)', // Boîtes de données dans une seule ligne (3 éléments)
             gap: '30px',
           }}
         >
-          {/* Metrics Boxes */}
+          {/* Boîtes de Métriques */}
           <div
             style={{
               background: 'white',
@@ -144,7 +144,7 @@ const DashboardMetrics = () => {
               minHeight: '150px',
             }}
           >
-            <div style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>Exercises per Course</div>
+            <div style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>Exercices par Cours</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#333' }}>{exercisesPerCourse}</div>
           </div>
 
@@ -159,7 +159,7 @@ const DashboardMetrics = () => {
               minHeight: '150px',
             }}
           >
-            <div style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>Lessons per Category</div>
+            <div style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>Leçons par Catégorie</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#333' }}>{lessonsPerCategory}</div>
           </div>
 
@@ -174,7 +174,7 @@ const DashboardMetrics = () => {
               minHeight: '150px',
             }}
           >
-            <div style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>Chapters per Course</div>
+            <div style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>Chapitres par Cours</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#333' }}>{chaptersPerCourse}</div>
           </div>
         </div>
@@ -182,7 +182,7 @@ const DashboardMetrics = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr', // Single column layout for charts
+            gridTemplateColumns: '1fr', // Mise en page en une seule colonne pour les graphiques
             gap: '30px',
             marginTop: '30px',
           }}
@@ -207,7 +207,7 @@ const DashboardMetrics = () => {
                   plugins: {
                     title: {
                       display: true,
-                      text: 'Counts of Various Metrics',
+                      text: 'Comptes de Diverses Métriques',
                     },
                   },
                 }}
@@ -233,7 +233,7 @@ const DashboardMetrics = () => {
                   plugins: {
                     title: {
                       display: true,
-                      text: 'Distribution of Assignments, Subscriptions, and Responses',
+                      text: 'Répartition des Devoirs, Abonnements et Réponses',
                     },
                   },
                 }}
@@ -262,7 +262,7 @@ const DashboardMetrics = () => {
                   plugins: {
                     title: {
                       display: true,
-                      text: 'Student Growth Over Time',
+                      text: 'Croissance des Étudiants au Fil du Temps',
                     },
                   },
                 }}
@@ -289,7 +289,7 @@ const DashboardMetrics = () => {
                   plugins: {
                     title: {
                       display: true,
-                      text: 'Performance Comparison',
+                      text: 'Comparaison de la Performance',
                     },
                   },
                 }}
@@ -316,7 +316,7 @@ const DashboardMetrics = () => {
                   plugins: {
                     title: {
                       display: true,
-                      text: 'Assigned vs Unassigned Lessons',
+                      text: 'Leçons Assignées vs Non Assignées',
                     },
                   },
                 }}

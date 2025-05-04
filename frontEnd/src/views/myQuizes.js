@@ -70,14 +70,14 @@ export default function MyQuizes() {
                     <img className="img-fluid" src="https://placehold.co/400x200" alt="quiz" />
                   </div>
                   <div className="text-center p-4 pb-0">
-                    <h5 className="mb-0">Passed At </h5>{formatDate(response.responseDate)}
+                    <h5 className="mb-0">Passé en   </h5>{formatDate(response.responseDate)}
                   </div>
                   <div className="text-center p-4 pb-0">
                     <h5 className="mb-0">Score  </h5>{response.totalPoints}
                   </div>
                   <div className="d-flex justify-content-center p-3">
-                    <button className='btn btn-danger mx-2' onClick={() => deleteQuiz(response._id)}>Delete Response</button>
-                    <button className='btn btn-warning mx-2' onClick={() => restartQuiz(response.quizId)}>Restart Quiz</button>
+                    <button className='btn btn-danger mx-2' onClick={() => deleteQuiz(response._id)}>Supprimer Réponse</button>
+                    <button className='btn btn-warning mx-2' onClick={() => restartQuiz(response.quizId)}>Redémarrer Quiz</button>
                   </div>
                 </div>
               </div>

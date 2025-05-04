@@ -142,10 +142,10 @@ const QuizPage = () => {
               {role!="student" && 
               <div className="actions p-2">
                 <button type="button" className="btn btn-warning mx-2" onClick={()=>{updateQuestion(question._id)}}>
-                  Update Question
+                  Modifier Question
                 </button>
                 <button type="button" className="btn btn-danger" onClick={()=>{deleteQuestion(question._id)}}>
-                  Delete Question
+                  Supprimer Question
                 </button>
               </div>
               }
@@ -154,7 +154,7 @@ const QuizPage = () => {
           {role=="student" && 
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-success btn-lg">
-              Submit Quiz
+              Soumettre Quiz
             </button>
           </div>
           }

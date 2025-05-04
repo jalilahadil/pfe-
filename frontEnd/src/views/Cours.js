@@ -79,36 +79,36 @@ function PersonalProfileCours() {
         }
         </div>
         <div className="row g-4 justify-content-center">
-          {courses.map((course, index) => (
-            <div className="col-lg-4 col-md-6 wow fadeInUp"  key={index}>
-              <div className="course-item bg-light">
-                <div className="position-relative overflow-hidden">
-                  <img className="img-fluid" src={courseImage} alt={`Course ${index + 1}`} />
-                  <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                    <a href={"/cours/courseDetails/"+course._id} className="flex-shrink-0 btn btn-sm specialButton px-3" style={{ borderRadius: '30px' }}>See Details</a>
-                  </div>
-                </div>
-                <div className="text-center p-4 pb-0">
-                  <h3 className="mb-0">{course.price} $</h3>
-                  
-                  <h5 className="mb-4">{course.title}</h5>
-                </div>
-                <div className="d-flex border-top">
-                  <small className="flex-fill text-center border-end py-2">
-                    <i className="fa fa-user-tie specialText me-2"></i>
-                    {course.chapters.length} Chapters
-                  </small>
-                  <small className="flex-fill text-center border-end py-2">
-                    <i className="fa fa-clock specialText me-2"></i>{course.duration} 
-                  </small>
-                  <small className="flex-fill text-center py-2">
-                    <i className="fa fa-user specialText me-2"></i>{course.lessonsCount} Lessons
-                  </small>
-                </div>
-              </div>
-            </div>
-          ))}
+  {courses.map((course, index) => (
+    <div className="col-lg-4 col-md-6 wow fadeInUp" key={index}>
+      <div className="course-item bg-light">
+        <div className="position-relative overflow-hidden">
+          <img className="img-fluid" src={courseImage} alt={`Course ${index + 1}`} />
+          <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+            <a href={"/cours/courseDetails/"+course._id} className="flex-shrink-0 btn btn-sm specialButton px-3" style={{ borderRadius: '30px' }}>Voir les détails</a>
+          </div>
         </div>
+        <div className="text-center p-4 pb-0">
+          <h3 className="mb-0">{course.price} $</h3>
+          <h5 className="mb-4">{course.title}</h5>
+        </div>
+        <div className="d-flex border-top">
+          <small className="flex-fill text-center border-end py-2">
+            <i className="fa fa-user-tie specialText me-2"></i>
+            {course.chapters.length} Chapitres
+          </small>
+          <small className="flex-fill text-center border-end py-2">
+            <i className="fa fa-clock specialText me-2"></i>{course.duration}
+          </small>
+          <small className="flex-fill text-center py-2">
+            <i className="fa fa-user specialText me-2"></i>{course.lessonsCount} Leçons
+          </small>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
       
     </div>

@@ -120,13 +120,13 @@ const handleUpdateSubmitAT = (e) => {
                 <td>{new Date(response.accomplishDate).toLocaleString()}</td>
                 <td>
                   <button className="btn btn-danger" onClick={() => deleteAssignment(response._id)}>
-                    Delete
+                    Supprimer
                   </button>
                   <button className="btn btn-warning mx-1" onClick={() => setUpdatedAssignment(response)}>
-                    Update
+                    Mettre à jour
                   </button>
                   <button className="btn btn-primary mx-1" onClick={() => setSelectedAssignment(response)}>
-                    View
+                    Détails
                   </button>
                 </td>
               </tr>

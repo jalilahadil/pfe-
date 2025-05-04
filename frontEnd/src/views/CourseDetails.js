@@ -90,190 +90,186 @@ export default function CourseDetails() {
     <Navbar color="var(--mainColor)"></Navbar>
     <main className="main">
 
-
-<div className="page-title" >
-  <div className="heading my-5">
-    <div className="container">
-      <div className="row d-flex justify-content-center text-center">
-        <div className="col-lg-8">
-          <h5>Course Details</h5>
-          <h3 style={{color:"var(--mainColor)"}}>{course.title}</h3>
-          <p className="mb-0 fs-5">
-            {course.description}
+  <div className="page-title">
+    <div className="heading my-5">
+      <div className="container">
+        <div className="row d-flex justify-content-center text-center">
+          <div className="col-lg-8">
+            <h5>Détails du cours</h5>
+            <h3 style={{color:"var(--mainColor)"}}>{course.title}</h3>
+            <p className="mb-0 fs-5">
+              {course.description}
             </p>
+          </div>
         </div>
       </div>
     </div>
+    <nav className="breadcrumbs">
+      <div className="container">
+        <ol>
+          <li><a href="index.html">Accueil/</a></li>
+          <li className="current">Détails du cours/</li>
+        </ol>
+      </div>
+    </nav>
   </div>
-  <nav className="breadcrumbs">
-    <div className="container">
-      <ol>
-        <li><a href="index.html">Home/</a></li>
-        <li className="current">Course Details/</li>
-      </ol>
-    </div>
-  </nav>
-</div>
-<section id="courses-course-details" className="courses-course-details section">
 
-  <div className="container" data-aos="fade-up">
+  <section id="courses-course-details" className="courses-course-details section">
 
-    <div className="row">
-      <div className="col-lg-8">
-        <img src={imageOne} className="img-fluid" alt="" />
-        <h3>{course.title}</h3>
-        <p>
-          {course.description}
-        </p>
-      </div>
-      <div className="col-lg-4">
+    <div className="container" data-aos="fade-up">
 
-        <div className="course-info d-flex justify-content-between align-items-center">
-          <h5>Course Duration</h5>
-          <p>{course.duration}</p>
+      <div className="row">
+        <div className="col-lg-8">
+          <img src={imageOne} className="img-fluid" alt="" />
+          <h3>{course.title}</h3>
+          <p>
+            {course.description}
+          </p>
         </div>
+        <div className="col-lg-4">
 
-        <div className="course-info d-flex justify-content-between align-items-center">
-          <h5>Course Fee</h5>
-          <p>{course.price} $</p>
-        </div>
+          <div className="course-info d-flex justify-content-between align-items-center">
+            <h5>Durée du cours</h5>
+            <p>{course.duration}</p>
+          </div>
 
-        <div className="course-info d-flex justify-content-between align-items-center">
-          <h5>Course Lessons</h5>
-          <p>{course.lessonsCount}</p>
-        </div>
-        
- 
-        <div className="col gap-2 d-flex flex-column">
-          {(course.creatorId==user._id || role=="admin") && 
-            <button className="btn-danger btn" onClick={()=>{deleteCourse(course._id)}}> <MdDelete  className='fs-4 mx-2'/>Delete Course</button>
-          }
-          {(course.creatorId==user._id || role=="admin") &&
-            <button className="btn-warning btn" onClick={()=>{setSelectedCourse(course);setIsShown(true)}}> <FaPen  className='fs-4 mx-2' />Update Course</button>
-          } 
-          {
-            role=="student" && <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2' />Subscribe To Course</button>
+          <div className="course-info d-flex justify-content-between align-items-center">
+            <h5>Frais du cours</h5>
+            <p>{course.price} $</p>
+          </div>
 
-          }
+          <div className="course-info d-flex justify-content-between align-items-center">
+            <h5>Leçons du cours</h5>
+            <p>{course.lessonsCount}</p>
+          </div>
+
+          <div className="col gap-2 d-flex flex-column">
+            {(course.creatorId==user._id || role=="admin") && 
+              <button className="btn-danger btn" onClick={()=>{deleteCourse(course._id)}}> <MdDelete  className='fs-4 mx-2'/>Supprimer le cours</button>
+            }
+            {(course.creatorId==user._id || role=="admin") &&
+              <button className="btn-warning btn" onClick={()=>{setSelectedCourse(course);setIsShown(true)}}> <FaPen  className='fs-4 mx-2' />Modifier le cours</button>
+            } 
+            {
+              role=="student" && <button className="btn-success btn" onClick={subscribeToCourse}> <FiSave className='fs-4 mx-2' />S'inscrire au cours</button>
+            }
             {(course.creatorId==user._id || role=="admin") &&
             <button className="btn-primary btn">
-            <Link style={{color:"#fff",textDecoration:"none"}} to={"/cours/updateCourse/"+course._id}>
+              <Link style={{color:"#fff",textDecoration:"none"}} to={"/cours/updateCourse/"+course._id}>
 
-               <MdOutlineContentCopy   className='fs-4 mx-2'/>
-               Manage  Content
-               </Link>
-               </button>
+                <MdOutlineContentCopy   className='fs-4 mx-2'/>
+                Gérer le contenu
+              </Link>
+            </button>
             }
-            
- 
+
+          </div>
+
         </div>
-
       </div>
+
     </div>
 
-  </div>
+  </section>
 
-</section>
-{isShown && <div className="modal fade  show d-block" tabIndex="-1" role="dialog" id="courseModal">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="courseModalLabel">Modifier le cours</h5>
-        <button
-          type="button"
-          className="btn-close"
-          onClick={()=>{setIsShown(false)}}
-        ></button>
-      </div>
-      <div className="modal-body">
-      <form id="courseForm">
-  <div className="mb-3">
-    <label htmlFor="title" className="form-label">Titre</label>
-    <input
-      type="text"
-      value={selectedCourse.title}
-      className="form-control"
-      id="title"
-      name="title"
-      onChange={(e) => setSelectedCourse({ ...selectedCourse, title: e.target.value })}
-    />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="description" className="form-label">Description</label>
-    <textarea
-      className="form-control"
-      id="description"
-      name="description"
-      rows="3"
-      value={selectedCourse.description}
-      onChange={(e) => setSelectedCourse({ ...selectedCourse, description: e.target.value })}
-    ></textarea>
-  </div>
-  <div className="mb-3">
-    <label htmlFor="categoryId" className="form-label">Catégorie</label>
-    <select
-      className="form-select"
-      id="categoryId"
-      name="categoryId"
-      value={selectedCourse.categoryId}
-      onChange={(e) => setSelectedCourse({ ...selectedCourse, categoryId: e.target.value })}
-    >
-      <option value="">Sélectionnez une catégorie</option>
-      {categories.map((category) => (
-        <option key={category._id} value={category._id}>
-          {category.categoryName}
-        </option>
-      ))}
-    </select>
-  </div>
-  <div className="mb-3">
-    <label htmlFor="duration" className="form-label">Durée (ex: 1h 30min)</label>
-    <input
-      type="text"
-      className="form-control"
-      id="duration"
-      name="duration"
-      value={selectedCourse.duration}
-      onChange={(e) => setSelectedCourse({ ...selectedCourse, duration: e.target.value })}
-    />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="lessonsCount" className="form-label">Nombre de leçons</label>
-    <input
-      type="number"
-      className="form-control"
-      id="lessonsCount"
-      name="lessonsCount"
-      value={selectedCourse.lessonsCount}
-      onChange={(e) => setSelectedCourse({ ...selectedCourse, lessonsCount: e.target.value })}
-    />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="price" className="form-label">Prix</label>
-    <input
-      type="number"
-      className="form-control"
-      id="price"
-      name="price"
-      value={selectedCourse.price}
-      onChange={(e) => setSelectedCourse({ ...selectedCourse, price: e.target.value })}
-    />
-  </div>
-</form>
+  {isShown && <div className="modal fade  show d-block" tabIndex="-1" role="dialog" id="courseModal">
+    <div className="modal-dialog" role="document">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="courseModalLabel">Modifier le cours</h5>
+          <button
+            type="button"
+            className="btn-close"
+            onClick={()=>{setIsShown(false)}}
+          ></button>
+        </div>
+        <div className="modal-body">
+        <form id="courseForm">
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">Titre</label>
+            <input
+              type="text"
+              value={selectedCourse.title}
+              className="form-control"
+              id="title"
+              name="title"
+              onChange={(e) => setSelectedCourse({ ...selectedCourse, title: e.target.value })}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">Description</label>
+            <textarea
+              className="form-control"
+              id="description"
+              name="description"
+              rows="3"
+              value={selectedCourse.description}
+              onChange={(e) => setSelectedCourse({ ...selectedCourse, description: e.target.value })}
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="categoryId" className="form-label">Catégorie</label>
+            <select
+              className="form-select"
+              id="categoryId"
+              name="categoryId"
+              value={selectedCourse.categoryId}
+              onChange={(e) => setSelectedCourse({ ...selectedCourse, categoryId: e.target.value })}
+            >
+              <option value="">Sélectionnez une catégorie</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.categoryName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="duration" className="form-label">Durée (ex: 1h 30min)</label>
+            <input
+              type="text"
+              className="form-control"
+              id="duration"
+              name="duration"
+              value={selectedCourse.duration}
+              onChange={(e) => setSelectedCourse({ ...selectedCourse, duration: e.target.value })}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="lessonsCount" className="form-label">Nombre de leçons</label>
+            <input
+              type="number"
+              className="form-control"
+              id="lessonsCount"
+              name="lessonsCount"
+              value={selectedCourse.lessonsCount}
+              onChange={(e) => setSelectedCourse({ ...selectedCourse, lessonsCount: e.target.value })}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="price" className="form-label">Prix</label>
+            <input
+              type="number"
+              className="form-control"
+              id="price"
+              name="price"
+              value={selectedCourse.price}
+              onChange={(e) => setSelectedCourse({ ...selectedCourse, price: e.target.value })}
+            />
+          </div>
+        </form>
 
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" onClick={()=>{setIsShown(false)}}>Annuler</button>
-        <button type="button" className="btn btn-primary" form="courseForm" onClick={()=>{updateCourse()}}>Modifier</button>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" onClick={()=>{setIsShown(false)}}>Annuler</button>
+          <button type="button" className="btn btn-primary" form="courseForm" onClick={()=>{updateCourse()}}>Modifier</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-}
-
-
+  </div>}
 
 </main>
+
     </>
   )
 }
