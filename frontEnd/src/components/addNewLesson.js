@@ -21,13 +21,32 @@ export default function AddNewLesson() {
     const { name, value } = e.target;
     setLessonForm((prev) => ({ ...prev, [name]: value }));
   };
-
+  const sendNotification=()=>{
+    const message = `Une nouvelle leçon a été ajoutée ! Veuillez consulter vos cours si vous souhaitez y participer.`;
+    const date=new Date().toISOString()
+    const title ="Alerte !  "
+    const waring={
+      notificationDate:date,
+      notificationTitle:title,
+      notificationDescription:message,
+      notificationReceiver:"All",
+    }
+    console.log(waring)
+    axios.post("http://localhost:8080/notifications/postNotifications/",waring)
+    .then((response)=>{
+      console.log(response.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Submitted', lessonForm);
     axios.post("http://localhost:8080/lessons/addOne/",lessonForm)
     .then(response=>{
         console.log(response)
+        sendNotification()
         navigate("/chapter/manageContent/"+chapterId)
     })
     .catch((error)=>{

@@ -83,6 +83,9 @@ server.use("/",quizResponseRouters);
 // stats responses Routes
 const statsRouters=require("./routes/statsRoutes")
 server.use("/",statsRouters);
+// notifications responses Routes
+const notificationsRouters=require("./routes/notificationsRoute")
+server.use("/",notificationsRouters);
 /******** STARTING THE CONNECTION WITH THE DATABASE  ***********/
 const connectToDatabase=require("./database/connectDatabase")
 connectToDatabase()

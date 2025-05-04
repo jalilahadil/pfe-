@@ -16,7 +16,25 @@ const CreateChapterModal = ({ courseId,onUpdate  }) => {
       [e.target.name]: e.target.value
     });
   };
-
+  const sendNotification=()=>{
+    const message = `Un nouveau chapitre a été ajouté ! Veuillez consulter vos cours si vous souhaitez y participer.`;
+    const date=new Date().toISOString()
+    const title ="Alerte !  "
+    const waring={
+      notificationDate:date,
+      notificationTitle:title,
+      notificationDescription:message,
+      notificationReceiver:"All",
+    }
+    console.log(waring)
+    axios.post("http://localhost:8080/notifications/postNotifications/",waring)
+    .then((response)=>{
+      console.log(response.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,6 +46,7 @@ const CreateChapterModal = ({ courseId,onUpdate  }) => {
      axios.post("http://localhost:8080/chapters/createChapter/", newChapter)
      .then(response=>{
         console.log(response)
+        sendNotification()
         onUpdate()
      })
      .catch(error=>{

@@ -10,7 +10,25 @@ const CreateExerciceModal = ({ lessonId,onUpdate  }) => {
     score: 0,
     lessonId:lessonId
   });
-
+  const sendNotification=()=>{
+    const message = `Un nouvel exercice été ajouté ! Veuillez consulter vos cours si vous souhaitez y participer. `;
+    const date=new Date().toISOString()
+    const title ="Alerte !  "
+    const waring={
+      notificationDate:date,
+      notificationTitle:title,
+      notificationDescription:message,
+      notificationReceiver:"All",
+    }
+    console.log(waring)
+    axios.post("http://localhost:8080/notifications/postNotifications/",waring)
+    .then((response)=>{
+      console.log(response.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  };
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -26,6 +44,7 @@ const CreateExerciceModal = ({ lessonId,onUpdate  }) => {
      axios.post("http://localhost:8080/exercises/createOne/", newExercice)
      .then(response=>{
         console.log(response)
+        sendNotification()
         onUpdate()
      })
      .catch(error=>{

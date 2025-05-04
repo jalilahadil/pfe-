@@ -24,7 +24,25 @@ export default function AddCourse(props) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
-
+  const sendNotification=()=>{
+    const message = `Un nouveau cours a été ajouté ! Veuillez consulter vos cours si vous souhaitez y participer.`;
+    const date=new Date().toISOString()
+    const title ="Alerte !  "
+    const waring={
+      notificationDate:date,
+      notificationTitle:title,
+      notificationDescription:message,
+      notificationReceiver:"All",
+    }
+    console.log(waring)
+    axios.post("http://localhost:8080/notifications/postNotifications/",waring)
+    .then((response)=>{
+      console.log(response.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  };
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,6 +58,7 @@ export default function AddCourse(props) {
     axios.post("http://localhost:8080/courses/addCourse",courseData)
     .then((response)=>{
         console.log(response)
+        sendNotification()
         setIsShown(false)
         props.onUpdate()
         

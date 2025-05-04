@@ -9,7 +9,7 @@ import OurServices from './views/ourServices';
 import Login from "./views/login/Login";
 import Signup from "./views/Signup";
 import Profile from "./views/ProfilePage";
-import NotificationManager from './views/notification';
+import NotificationManager from './views/Notifications.js';
 import Cours from './views/Cours.js';
 import CourseDetails from './views/CourseDetails.js';
 import Etudiants from './views/etudiants.js';

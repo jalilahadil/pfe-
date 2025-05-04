@@ -55,6 +55,25 @@ const QuizPage = () => {
       console.log(error)
     })
   }
+  const sendNotification=()=>{
+    const message = `Votre réponse a été bien enregistrée !`;
+    const date=new Date().toISOString()
+    const title ="Alerte !  "
+    const waring={
+      notificationDate:date,
+      notificationTitle:title,
+      notificationDescription:message,
+      notificationReceiver:"All",
+    }
+    console.log(waring)
+    axios.post("http://localhost:8080/notifications/postNotifications/",waring)
+    .then((response)=>{
+      console.log(response.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  };
   // Handle form submission
   const handleSubmit = (e) => {
     setTotalPoints(0)
@@ -71,6 +90,7 @@ const QuizPage = () => {
     axios.post("http://localhost:8080/quizReponse/addResponse/",data)
     .then((response)=>{
       console.log(response.data)
+      sendNotification()
       navigate("/myQuizes")
     })
     .catch((error)=>{
