@@ -122,34 +122,38 @@ function SignupS() {
                         required
                       />
                     </div>
+{/* Date de naissance */}
+<div className="form-outline">
+  <label className="form-label" htmlFor="dateNaissance">Date de naissance</label>
+  <input
+    type="date"
+    id="dateNaissance"
+    name="userBirthDate"
+    className="form-control"
+    value={formData.userBirthDate}
+    onChange={handleChange}
+    required
+  />
+</div>
 
-                    {/* Date de naissance */}
-                    <div className="form-outline">
-                      <label className="form-label" htmlFor="dateNaissance">Date de naissance</label>
-                      <input
-                        type="date"
-                        id="dateNaissance"
-                        name="userBirthDate"
-                        className="form-control"
-                        value={formData.userBirthDate}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+{/* Âge */}
+<div className="form-outline">
+  <label className="form-label" htmlFor="age">Âge</label>
+  <input
+    type="number"
+    id="age"
+    name="userAge"
+    readOnly
+    className="form-control"
+    value={
+      formData.userBirthDate
+        ? new Date().getFullYear() - new Date(formData.userBirthDate).getFullYear()
+        : ''
+    }
+    required
+  />
+</div>
 
-                    {/* Âge */}
-                    <div className="form-outline">
-                      <label className="form-label" htmlFor="age">Âge</label>
-                      <input
-                        type="number"
-                        id="age"
-                        name="userAge"
-                        className="form-control"
-                        value={formData.userAge}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
 
                     {/* Email */}
                     <div className="form-outline">
@@ -211,7 +215,7 @@ function SignupS() {
                   </div>
 
                   <div className="form-outline">
-                    <label className="form-label" htmlFor="userGender">Genre</label>
+                    <label className="form-label" htmlFor="userGender">Sexe</label>
                     <select
                       id="userGender"
                       name="userGender"
