@@ -89,7 +89,7 @@ function PersonalProfileCours() {
           </div>
         </div>
         <div className="text-center p-4 pb-0">
-          <h3 className="mb-0">{course.price} $</h3>
+          <h3 className="mb-0">{course.price} TND</h3>
           <h5 className="mb-4">{course.title}</h5>
         </div>
         <div className="d-flex border-top">

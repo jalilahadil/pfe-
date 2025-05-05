@@ -74,7 +74,7 @@ export default function CourseQuiz() {
                 </div>
               </div>
             )) : (
-              <p className='alert alert-danger'>No Quizzes yet for this lesson!</p>
+              <p className='alert alert-danger'>Pas encore de quiz pour cette leçon !</p>
             )}
           </div>
 

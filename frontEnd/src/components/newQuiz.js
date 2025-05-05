@@ -21,7 +21,7 @@ export default function NewQuiz(props) {
     return (
         <>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createQuizModal">
-                Create New Quiz
+                Créer un nouveau  Quiz
             </button>
 
             <div className="modal fade" id="createQuizModal" tabIndex="-1" aria-labelledby="createQuizModalLabel" aria-hidden="true">
