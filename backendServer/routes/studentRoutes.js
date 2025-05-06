@@ -22,7 +22,7 @@ router.get("/students/getAllStudents", getAllStudents);
 router.post("/students/addNewStudent/", createStudent);
 
 // 🔄 Update a student by ID
-router.put("/teachers/updateOne/:id", updateStudent);
+router.put("/students/updateOne/:id", updateStudent);
 
 // ❌ Delete a student by ID
 router.delete("/students/deleteOne/:id", deleteStudent);

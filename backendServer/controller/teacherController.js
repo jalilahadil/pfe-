@@ -91,16 +91,19 @@ const updateTeacher = async (req, res) => {
             userBirthDate,
             userEmail,
             userPassowrd,
-            userPhoneNumber,}=req.body
+            userPhoneNumber,
+            accountStatus
+        }=req.body
         const data={userLastName,
             userFirstName,
             userBirthDate,
             userEmail,
             userPassowrd,
-            userPhoneNumber}
+            userPhoneNumber,
+            accountStatus}
 
         const updatedTeacher = await Teacher.findByIdAndUpdate(
-            req.params.id,
+            req.body._id,
             data,
             { new: true, runValidators: true }
         );

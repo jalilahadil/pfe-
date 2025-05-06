@@ -7,7 +7,8 @@ export default function Teachers() {
   const [error,setError]=useState(false)
   const activateAccount=(teacher)=>{
     const updatedTeacher={...teacher,accountStatus:"active"}
-    axios.put("http://localhost:8080/teachers/updateOne/"+teacher._id,updatedTeacher)
+    console.log(updatedTeacher)
+     axios.put("http://localhost:8080/teachers/updateOne/"+teacher._id,updatedTeacher)
     .then(response=>{
         console.log(response)
         loadTeachers()
@@ -16,11 +17,12 @@ export default function Teachers() {
     .catch(error=>{
         console.log(error)
         setError(true)
-    })
+    }) 
   }
   const blockAccount=(teacher)=>{
     const updatedTeacher={...teacher,accountStatus:"waiting"}
-    axios.put("http://localhost:8080/teachers/updateOne/"+teacher._id,updatedTeacher)
+    console.log(updatedTeacher)
+     axios.put("http://localhost:8080/teachers/updateOne/"+teacher._id,updatedTeacher)
     .then(response=>{
         console.log(response)
        
@@ -30,7 +32,7 @@ export default function Teachers() {
     .catch(error=>{
         console.log(error)
         setError(true)
-    })
+    }) 
   }
   const [success,setSuccess]=useState(false)
   const [teachers, setTeachers] = useState([]);

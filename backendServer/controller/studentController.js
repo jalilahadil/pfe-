@@ -92,16 +92,17 @@ const updateStudent = async (req, res) => {
             userBirthDate,
             userEmail,
             userPassowrd,
-            userPhoneNumber,}=req.body
+            userPhoneNumber,
+        accountStatus}=req.body
         const data={userLastName,
             userFirstName,
             userBirthDate,
             userEmail,
             userPassowrd,
-            userPhoneNumber}
+            userPhoneNumber,accountStatus}
       
         const updatedStudent = await Student.findByIdAndUpdate(
-            user._id,
+            req.body._id,
             data ,
             { new: true, runValidators: true }
         );

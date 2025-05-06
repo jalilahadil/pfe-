@@ -21,7 +21,8 @@ export default function Etudiants() {
   }
   const blockAccount=(student)=>{
     const updatedStudent={...student,accountStatus:"waiting"}
-    axios.put("http://localhost:8080/students/updateOne/"+student._id,updatedStudent)
+    console.log(updatedStudent)
+     axios.put("http://localhost:8080/students/updateOne/"+student._id,updatedStudent)
     .then(response=>{
         console.log(response)
        
@@ -31,7 +32,7 @@ export default function Etudiants() {
     .catch(error=>{
         console.log(error)
         setError(true)
-    })
+    }) 
   }
   const [success,setSuccess]=useState(false)
   const [students, setStudents] = useState([]);
