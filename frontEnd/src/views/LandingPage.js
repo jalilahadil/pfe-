@@ -11,8 +11,7 @@ export default function LandingPage () {
         <div className='container content h-75 d-flex flex-column justify-content-center'>
     <p className='firstText'>Inscription</p>
     <p className='secondText'>
-        <span>OUVERT POUR </span>
-        <span>2024-2025</span>
+        <span> Inscrivez-vous dès maintenant ! </span>
     </p>
     <p className='sloganText'>
         Terrain de jeux | Cours gratuits | Activités après l'étude
