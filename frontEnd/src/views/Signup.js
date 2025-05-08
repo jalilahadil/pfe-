@@ -194,6 +194,7 @@ function SignupS() {
                         value={formData.userPhoneNumber}
                         onChange={handleChange}
                         required
+                        maxLength={8}
                       />
                     </div>
 

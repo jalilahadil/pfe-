@@ -1,8 +1,9 @@
 import React from 'react'
 import './styles/LandingPageStyle.css'
-
+import { useNavigate } from 'react-router'
 import Navbar from "../components/navbar"
 export default function LandingPage () {
+  const navigate=useNavigate()
   return (
     <>
       <div className='container-fluid bgContainer '>
@@ -17,7 +18,7 @@ export default function LandingPage () {
         Terrain de jeux | Cours gratuits | Activités après l'étude
     </p>
     <p className='sloganText'>
-        <button className='btn btn-lg' id="enrollBtn">Inscrivez-vous maintenant</button>
+        <button className='btn btn-lg' id="enrollBtn" onClick={()=>{navigate("/signup")}}>Inscrivez-vous maintenant</button>
     </p>
 </div>
 
