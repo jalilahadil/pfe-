@@ -40,26 +40,26 @@ export default function Navbar(props) {
             {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/gallery">
-                Gallery
+                Gallerie
               </Link>
             </li>}
             
             {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/latestNews">
-                Latest News
+                Nouveautés
               </Link>
             </li>}
             {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/askUs">
-                Ask Us
+                Nous Contacter
               </Link>
             </li>}
             {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/services">
-                Services
+                Nos Services
               </Link>
             </li>}
             {isLoggedIn==true && 
