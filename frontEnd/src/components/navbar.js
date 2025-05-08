@@ -34,7 +34,7 @@ export default function Navbar(props) {
           <ul className="navbar-nav me-auto navbarItems mb-2 mb-lg-0 w-100 d-flex justify-content-end">
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                Home
+                Acceuil
               </Link>
             </li>
             {isLoggedIn==false && 
@@ -50,12 +50,12 @@ export default function Navbar(props) {
                 Nouveautés
               </Link>
             </li>}
-            {isLoggedIn==false && 
+            {/* {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/askUs">
                 Nous Contacter
               </Link>
-            </li>}
+            </li>} */}
             {isLoggedIn==false && 
             <li className="nav-item">
               <Link className="nav-link" to="/services">
