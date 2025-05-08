@@ -10,7 +10,7 @@ export default function LandingPage () {
         <Navbar color="transparent"></Navbar>
         <div className='container content h-75 d-flex flex-column justify-content-center'>
     <p className='firstText'>Inscription</p>
-    <p className='secondText'>
+    <p className='secondText h5'>
         <span> Inscrivez-vous dès maintenant ! </span>
     </p>
     <p className='sloganText'>
